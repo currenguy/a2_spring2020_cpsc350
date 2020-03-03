@@ -10,9 +10,10 @@ int main(int argc, char** argv)
   // delete g;
 
   //Testing Board Object
-  Board* b = new Board(7, 7);
-  b->populate_board(0.1);
+  Board* b = new Board(5, 5);
+  b->populate_board(0.5);
   b->print();
+  cout << b->is_empty()<< endl;
   delete b;
 
   return 0;

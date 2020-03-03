@@ -62,3 +62,17 @@ void Board:: populate_board(double population_density)
     }
   }
 }
+
+bool Board:: is_empty()
+{
+  int populated_cell_count = 0;
+  for (int i = 0; i < this->m_height; ++i)
+  {
+    for (int j = 0; j < this->m_width; ++j)
+    {
+      if (this->m_array[i][j] == 'X') populated_cell_count++;
+    }
+  }
+  if (populated_cell_count == 0) return true;
+  else return false;
+}
