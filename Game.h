@@ -16,9 +16,7 @@ class Game
 {
 
   public:
-
     Game();
-    Game(int w, int h, float r);
     ~Game();
 
     string getInputOptions();

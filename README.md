@@ -29,4 +29,5 @@
 ## 4. REFERENCES
 - Data Structures & Algorithms
 - Rene German
+- https://www.geeksforgeeks.org/create-dynamic-2d-array-inside-class-c/
 - 
