@@ -32,7 +32,11 @@ Board::Board(int h, int w)
 
 Board::~Board()
 {
-
+  for (int i = 0; i < this->m_height; ++i)
+  {
+    delete[] this->m_array[i];
+  }
+  delete[] this->m_array;
 }
 
 void Board::print()
