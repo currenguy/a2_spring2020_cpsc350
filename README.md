@@ -11,8 +11,8 @@
 
 ###Student 2
 - Full Name: Oliver Mathias
-- Student ID:
-- Chapman Email:
+- Student ID: 2289410
+- Chapman Email: mathias@chapman.edu
 
 ## 2. SOURCE FILES
 - Main.cpp
