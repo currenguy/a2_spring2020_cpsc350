@@ -5,7 +5,10 @@
 class Cell
 {
   public:
-
+    Cell();
+    ~Cell();
+    bool is_populated();
+    char value;
 
   private:
 
