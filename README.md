@@ -31,3 +31,4 @@
 - Rene German
 - https://www.geeksforgeeks.org/create-dynamic-2d-array-inside-class-c/
 - https://stackoverflow.com/questions/1340729/how-do-you-generate-a-random-double-uniformly-distributed-between-0-and-1-from-c/1340762
+- https://stackoverflow.com/questions/9459035/why-does-rand-yield-the-same-sequence-of-numbers-on-every-run
