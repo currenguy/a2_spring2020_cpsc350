@@ -5,8 +5,14 @@
 class Cell
 {
   public:
+    Cell();
+    ~Cell();
+    bool is_populated();
+    char value;
+
 
 
   private:
+    bool is_populated_state;
 
 };
