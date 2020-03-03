@@ -10,7 +10,8 @@ int main(int argc, char** argv)
   // delete g;
 
   //Testing Board Object
-  Board* b = new Board(4, 5);
+  Board* b = new Board(7, 7);
+  b->populate_board(0.1);
   b->print();
   delete b;
 

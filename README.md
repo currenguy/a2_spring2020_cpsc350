@@ -11,8 +11,8 @@
 
 ###Student 2
 - Full Name: Oliver Mathias
-- Student ID:
-- Chapman Email:
+- Student ID: 2289410
+- Chapman Email: mathias@chapman.edu
 
 ## 2. SOURCE FILES
 - Main.cpp
@@ -30,4 +30,4 @@
 - Data Structures & Algorithms
 - Rene German
 - https://www.geeksforgeeks.org/create-dynamic-2d-array-inside-class-c/
-- 
+- https://stackoverflow.com/questions/1340729/how-do-you-generate-a-random-double-uniformly-distributed-between-0-and-1-from-c/1340762
