@@ -1,5 +1,4 @@
 #include "Board.h"
-#include <ctime>
 
 Board::Board()
 {
@@ -48,22 +47,24 @@ void Board::print()
   }
 }
 
-void Board:: populate_board(double population_density)
+void Board:: populate(double density)
 {
   //seeding rand with time
   srand(time(NULL));
-  for (int i = 0; i < this->m_height; ++i)
+  int totalCells = this->m_height * this->m_width;
+  int cellsToFill = round(totalCells * density);
+  int cellsFilled = 0;
+
+  for (int i = 0; i < cellsToFill; ++i)
   {
-    for (int j = 0; j < this->m_width; ++j)
-    {
-      double random_double = ((double)rand()/(double)RAND_MAX);
-      if (random_double <= population_density) this->m_array[i][j] = 'X';
-      else this->m_array[i][j] = '-';
-    }
+    int randomRow = rand() % this->m_height;
+    int randomColumn = rand() % this->m_width;
+
+    this->m_array[randomRow][randomColumn] = 'X';
   }
 }
 
-bool Board:: is_empty()
+bool Board:: isEmpty()
 {
   int populated_cell_count = 0;
   for (int i = 0; i < this->m_height; ++i)

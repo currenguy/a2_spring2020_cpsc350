@@ -11,9 +11,9 @@ int main(int argc, char** argv)
 
   //Testing Board Object
   Board* b = new Board(5, 5);
-  b->populate_board(0.5);
+  b->populate(0.5);
   b->print();
-  cout << b->is_empty()<< endl;
+  cout << b->isEmpty()<< endl;
   delete b;
 
   return 0;
