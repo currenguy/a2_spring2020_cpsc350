@@ -5,8 +5,8 @@ class Mode
   public:
     Mode();
     ~Mode();
-    Board evolve();
-    bool isDone();
+    virtual Board evolve();
+    virtual bool isDone();
 
   private:
     Board m_currentGen;

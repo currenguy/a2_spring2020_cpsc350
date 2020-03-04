@@ -4,10 +4,10 @@
 
 int main(int argc, char** argv)
 {
-  //Testing Game Object
-  // Game* g = new Game();
-  // g->start();
-  // delete g;
+  // Testing Game Object
+  Game* g = new Game();
+  g->start();
+  delete g;
 
   //Testing Board Object
   // Board* b = new Board(5, 5);

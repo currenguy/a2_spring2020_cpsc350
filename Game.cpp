@@ -136,4 +136,29 @@ void Game::start()
         break;
     }
   }
+
+  if (this->m_boundMode == CLASSIC)
+  {
+    ClassicMode* c = new ClassicMode();
+    // while (!c->isDone())
+    // {
+    //   if (this->m_viewMode == AUTO)
+    //   {
+    //     c->evolve();
+    //     //wait
+    //   }
+    //   else if ()
+    //
+    // }
+    //
+    delete c;
+  }
+  else if (this->m_boundMode == DOUGHNUT)
+  {
+
+  }
+  else if (this->m_boundMode == MIRROR)
+  {
+
+  }
 }
