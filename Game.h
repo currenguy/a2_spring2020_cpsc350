@@ -1,4 +1,7 @@
-#include "Board.h"
+#include "Mode.h"
+// #include "Classic.h"
+// #include "Doughnut.h"
+// #include "Mirror.h"
 
 
 enum inputMode {INPUT = 1, RANDOM = 2};
@@ -29,7 +32,5 @@ class Game
     viewMode m_viewMode;
     boundMode m_boundMode;
     float m_decimal;
-    Board m_currentGen;
-    Board m_newGen;
 
 };
