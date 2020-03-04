@@ -159,6 +159,7 @@ void Game::start()
   }
   else if (this->m_boundMode == MIRROR)
   {
-
+    //MirrorMode* c = new MirrorMode();
+    //delete c;
   }
 }

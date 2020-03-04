@@ -1,5 +1,7 @@
 #include "Board.h"
 
+//in board: make a fucntion that pulls from file
+
 Board::Board()
 {
   m_height = 1;
