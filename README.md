@@ -4,12 +4,12 @@
 - Course Number and Section: CPSC 350-01
 - Assignment 2: Game of Life
 
-###Student 1
+Student 1
 - Full Name: Curren Taber
 - Student ID: 002325149
 - Chapman Email: ctaber@chapman.edu
 
-###Student 2
+Student 2
 - Full Name: Oliver Mathias
 - Student ID: 2289410
 - Chapman Email: mathias@chapman.edu

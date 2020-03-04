@@ -1,12 +1,4 @@
-#ifndef GAME_H
-#define GAME_H
-
-#include <iostream>
-#include <string>
-#include <cmath>
-#include <cstdlib>
-#include <ctime>
-using namespace std;
+#include "Board.h"
 
 
 enum inputMode {INPUT = 1, RANDOM = 2};
@@ -37,7 +29,7 @@ class Game
     viewMode m_viewMode;
     boundMode m_boundMode;
     float m_decimal;
+    Board m_currentGen;
+    Board m_newGen;
 
 };
-
-#endif

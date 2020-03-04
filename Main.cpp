@@ -1,4 +1,4 @@
-#include "Cell.h"
+#include "Game.h"
 
 //This is the driver file for Game of Life
 
