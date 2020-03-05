@@ -1,6 +1,7 @@
 // #include "Mode.h"
-//#include "MirrorMode.h"
+#include "MirrorMode.h"
 #include "ClassicMode.h"
+#include "DoughnutMode.h"
 
 
 enum inputMode {INPUT = 1, RANDOM = 2};

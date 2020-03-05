@@ -1,3 +1,6 @@
+#ifndef MODE_H
+#define MODE_H
+
 #include "Board.h"
 
 class Mode
@@ -13,3 +16,5 @@ class Mode
     Board m_nextGen;
 
 };
+
+#endif

@@ -1,3 +1,6 @@
+#ifndef DOUGHNUTMODE_H
+#define DOUGHNUTMODE_H
+
 #include "Board.h"
 #include "Mode.h"
 
@@ -10,7 +13,9 @@ class DoughnutMode: public Mode
     bool isDone();
 
   private:
-    Board m_currentGen;
-    Board m_nextGen;
+    Board* m_currentGen;
+    Board* m_nextGen;
 
 };
+
+#endif

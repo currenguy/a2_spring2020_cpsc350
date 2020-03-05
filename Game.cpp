@@ -81,7 +81,7 @@ void Game::start()
 
   userInput = -1;
   isValid = false;
-  cout << this->getViewOptions();
+  cout << this->getBoundOptions();
 
   //Asking user for a view mode
   while (isValid == false)
@@ -110,7 +110,7 @@ void Game::start()
 
   userInput = -1;
   isValid = false;
-  cout << this->getBoundOptions();
+  cout << this->getViewOptions();
 
   //Asking user for boundary mode
   while (isValid == false)
@@ -137,6 +137,8 @@ void Game::start()
     }
   }
 
+  cout << "Choice: " << this->m_boundMode << endl;
+
   if (this->m_boundMode == CLASSIC)
   {
     ClassicMode* c = new ClassicMode();
@@ -155,11 +157,13 @@ void Game::start()
   }
   else if (this->m_boundMode == DOUGHNUT)
   {
+    DoughnutMode* c = new DoughnutMode();
+    delete c;
 
   }
   else if (this->m_boundMode == MIRROR)
   {
-    //MirrorMode* c = new MirrorMode();
-    //delete c;
+    MirrorMode* c = new MirrorMode();
+    delete c;
   }
 }

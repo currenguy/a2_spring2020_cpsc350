@@ -1,3 +1,6 @@
+#ifndef CLASSICMODE_H
+#define CLASSICMODE_H
+
 #include "Board.h"
 #include "Mode.h"
 
@@ -10,7 +13,9 @@ class ClassicMode: public Mode
     bool isDone();
 
   private:
-    Board m_currentGen;
-    Board m_nextGen;
+    Board* m_currentGen;
+    Board* m_nextGen;
 
 };
+
+#endif
