@@ -30,7 +30,7 @@ Board::Board(int h, int w)
       m_array[i][j] = '-';
     }
   }
-  cout << "Makde fucking board" << endl;
+  cout << "Made board" << endl;
 }
 
 Board::~Board()
@@ -90,11 +90,42 @@ bool Board:: isEmpty()
 void Board:: write_char_at_index(int height, int width, char z)
 {
   m_array[height][width] = z;
-  cout << "Wrote" << endl;
+  //cout << "Wrote" << endl;
 }
 
 char Board:: read_char_at_index(int height, int width)
 {
   return m_array[height][width];
-  cout << "read" << endl;
+  //cout << "read" << endl;
+}
+
+void Board::set_array(char** input_array)
+{
+  for (int i = 0; i < m_height; ++i)
+  {
+    for (int j = 0; j < m_width; ++j)
+    {
+      m_array[i][j] = input_array[i][j];
+    }
+  }
+
+}
+
+char** Board::get_array()
+{
+  return m_array;
+}
+
+bool Board:: check_for_equality(char** input_array)
+{
+  int differences = 0;
+  for (int i = 0; i < m_height; ++i)
+  {
+    for (int j = 0; j < m_width; ++j)
+    {
+      if (m_array[i][j] != input_array[i][j]) differences++;
+    }
+  }
+  if (differences > 0) return false;
+  else return true;
 }

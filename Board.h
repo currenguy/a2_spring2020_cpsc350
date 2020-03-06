@@ -22,6 +22,9 @@ class Board
     bool isEmpty(); //Checks if board is empty
     void write_char_at_index(int height, int width, char z);
     char read_char_at_index(int height, int width);
+    void set_array(char** input_array);
+    char** get_array();
+    bool check_for_equality(char** input_array);
 
   private:
     char** m_array; // 2D array dynamically allocated during runtime
