@@ -6,8 +6,8 @@ int main(int argc, char** argv)
 {
 
   //fix the array setting value cause it's broken
-  ReadFile* read_ob = new ReadFile();
-  cout << read_ob->return_board("./test.txt") << endl;
+  //ReadFile* read_ob = new ReadFile();
+  //cout << read_ob->return_board("./test.txt") << endl;
 
   //
   // Board* b = new Board(5, 5);
@@ -22,9 +22,9 @@ int main(int argc, char** argv)
   // cout << c->read_char_at_index(2,3) << endl;
 
   // Testing Game Object
-  //Game* g = new Game();
-  //g->start();
-  //delete g;
+  Game* g = new Game();
+  g->start();
+  delete g;
 
   //Testing Board Object
   /*
