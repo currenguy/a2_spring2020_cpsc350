@@ -89,8 +89,6 @@ bool Board:: isEmpty()
 
 void Board:: write_char_at_index(int height, int width, char z)
 {
-  cout << "pre" << endl;
-  cout << height << " " << width << endl;
   m_array[height][width] = z;
   cout << "Wrote" << endl;
 }

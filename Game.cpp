@@ -143,9 +143,12 @@ void Game::start()
   {
     int height = 5;
     int width = 5;
-    double pop_density = 0.8;
+    double pop_density = 0.55;
     ClassicMode* c = new ClassicMode(height,width,pop_density);
-    c->evolve();
+    for (int i = 0; i < 1; ++i)
+    {
+      c->evolve();
+    }
 
     delete c;
   }
