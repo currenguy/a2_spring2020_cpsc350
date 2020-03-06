@@ -9,7 +9,7 @@ class MirrorMode: public Mode
   public:
     MirrorMode();
     ~MirrorMode();
-    Board evolve();
+    void evolve();
     bool isDone();
 
   private:

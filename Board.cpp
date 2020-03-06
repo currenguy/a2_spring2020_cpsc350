@@ -6,7 +6,7 @@ Board::Board()
 {
   m_height = 1;
   m_width = 1;
-  m_array = new char* [m_height];
+  this->m_array = new char* [m_height];
   for (int i = 0; i < m_height; ++i)
   {
     m_array[i] = new char[m_width];
@@ -30,6 +30,7 @@ Board::Board(int h, int w)
       m_array[i][j] = '-';
     }
   }
+  cout << "Makde fucking board" << endl;
 }
 
 Board::~Board()
@@ -39,6 +40,8 @@ Board::~Board()
     delete[] this->m_array[i];
   }
   delete[] this->m_array;
+
+  cout << "Destructed Board" << endl;
 }
 
 void Board::print()
@@ -82,4 +85,18 @@ bool Board:: isEmpty()
   }
   if (populated_cell_count == 0) return true;
   else return false;
+}
+
+void Board:: write_char_at_index(int height, int width, char z)
+{
+  cout << "pre" << endl;
+  cout << height << " " << width << endl;
+  m_array[height][width] = z;
+  cout << "Wrote" << endl;
+}
+
+char Board:: read_char_at_index(int height, int width)
+{
+  return m_array[height][width];
+  cout << "read" << endl;
 }

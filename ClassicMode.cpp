@@ -1,10 +1,14 @@
 #include "ClassicMode.h"
 
-ClassicMode::ClassicMode()
+ClassicMode::ClassicMode(int height, int width, double pop_density)
 {
   cout << "Made Classic Game!" << endl;
-  Board* m_currentGen = new Board();
-  Board* m_nextGen = new Board();
+  m_currentGen = new Board(height, width);
+  m_currentGen->populate(pop_density);
+  m_currentGen->print();
+  m_nextGen = new Board(height, width);
+  m_nextGen->write_char_at_index(3,3,'X');
+  m_nextGen->print();
 }
 
 ClassicMode::~ClassicMode()
@@ -13,9 +17,14 @@ ClassicMode::~ClassicMode()
   //delete m_currentGen;
 }
 
-Board ClassicMode::evolve()
+void ClassicMode::evolve()
 {
+  m_nextGen->print();
+  cout << "printed!" << endl;
 
+  m_nextGen->write_char_at_index(3,3,'X');
+
+  m_nextGen->print();
 }
 
 bool ClassicMode::isDone()

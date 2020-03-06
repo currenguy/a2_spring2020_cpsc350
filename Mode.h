@@ -8,7 +8,7 @@ class Mode
   public:
     Mode();
     ~Mode();
-    virtual Board evolve();
+    virtual void evolve();
     virtual bool isDone();
 
   private:

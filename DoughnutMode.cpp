@@ -13,7 +13,7 @@ DoughnutMode::~DoughnutMode()
   //delete m_nextGen;
 }
 
-Board DoughnutMode::evolve()
+void DoughnutMode::evolve()
 {
 
 }

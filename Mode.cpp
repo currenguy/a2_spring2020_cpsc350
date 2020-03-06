@@ -10,7 +10,7 @@ Mode::~Mode()
 
 }
 
-Board Mode::evolve()
+void Mode::evolve()
 {
 
 }

@@ -9,7 +9,7 @@ class DoughnutMode: public Mode
   public:
     DoughnutMode();
     ~DoughnutMode();
-    Board evolve();
+    void evolve();
     bool isDone();
 
   private:

@@ -7,9 +7,9 @@
 class ClassicMode: public Mode
 {
   public:
-    ClassicMode();
+    ClassicMode(int height, int width, double pop_density);
     ~ClassicMode();
-    Board evolve();
+    void evolve();
     bool isDone();
 
   private:

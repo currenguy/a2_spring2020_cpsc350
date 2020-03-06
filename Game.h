@@ -2,6 +2,7 @@
 #include "MirrorMode.h"
 #include "ClassicMode.h"
 #include "DoughnutMode.h"
+#include "ReadFile.h"
 
 
 enum inputMode {INPUT = 1, RANDOM = 2};

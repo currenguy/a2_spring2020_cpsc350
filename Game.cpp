@@ -141,18 +141,12 @@ void Game::start()
 
   if (this->m_boundMode == CLASSIC)
   {
-    ClassicMode* c = new ClassicMode();
-    // while (!c->isDone())
-    // {
-    //   if (this->m_viewMode == AUTO)
-    //   {
-    //     c->evolve();
-    //     //wait
-    //   }
-    //   else if ()
-    //
-    // }
-    //
+    int height = 5;
+    int width = 5;
+    double pop_density = 0.8;
+    ClassicMode* c = new ClassicMode(height,width,pop_density);
+    c->evolve();
+
     delete c;
   }
   else if (this->m_boundMode == DOUGHNUT)

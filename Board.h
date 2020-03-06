@@ -20,6 +20,8 @@ class Board
     void write(string filename); // Writes the board to the input file
     void populate(double density); // Populates board based on density input
     bool isEmpty(); //Checks if board is empty
+    void write_char_at_index(int height, int width, char z);
+    char read_char_at_index(int height, int width);
 
   private:
     char** m_array; // 2D array dynamically allocated during runtime
