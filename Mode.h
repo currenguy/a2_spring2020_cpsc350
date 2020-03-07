@@ -12,8 +12,8 @@ class Mode
     virtual bool isDone();
 
   private:
-    Board m_currentGen;
-    Board m_nextGen;
+    Board* m_currentGen;
+    Board* m_nextGen;
 
 };
 

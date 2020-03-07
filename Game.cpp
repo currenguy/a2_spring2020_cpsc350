@@ -158,9 +158,19 @@ void Game::start()
   }
   else if (this->m_boundMode == DOUGHNUT)
   {
-    DoughnutMode* c = new DoughnutMode();
-    delete c;
+    DoughnutMode* c = new DoughnutMode("test.txt");
+    int iter = 0;
+    
+    while (!c->isDone())
+    {
+      cout << "Iteration: " << iter << endl;
+      c->evolve();
+      ++iter;
+    }
+    cout << "Iteration: " << iter << endl;
+    c->getCurrentBoard()->print();
 
+    delete c;
   }
   else if (this->m_boundMode == MIRROR)
   {
