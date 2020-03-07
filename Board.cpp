@@ -87,36 +87,36 @@ bool Board:: isEmpty()
   else return false;
 }
 
-void Board:: write_char_at_index(int height, int width, char z)
+void Board:: writeAtIndex(int height, int width, char z)
 {
   m_array[height][width] = z;
   //cout << "Wrote" << endl;
 }
 
-char Board:: read_char_at_index(int height, int width)
+char Board:: readAtIndex(int height, int width)
 {
   return m_array[height][width];
   //cout << "read" << endl;
 }
 
-void Board::set_array(char** input_array)
+void Board::setArray(char** input_array)
 {
   for (int i = 0; i < m_height; ++i)
   {
     for (int j = 0; j < m_width; ++j)
     {
-      m_array[i][j] = input_array[i][j];
+      this->m_array[i][j] = input_array[i][j];
     }
   }
 
 }
 
-char** Board::get_array()
+char** Board::getArray()
 {
   return m_array;
 }
 
-bool Board:: check_for_equality(char** input_array)
+bool Board:: isEqual(char** input_array)
 {
   int differences = 0;
   for (int i = 0; i < m_height; ++i)
@@ -130,7 +130,7 @@ bool Board:: check_for_equality(char** input_array)
   else return true;
 }
 
-void Board::zero_out_array()
+void Board::zero()
 {
   for (int i = 0; i < m_height; ++i)
   {

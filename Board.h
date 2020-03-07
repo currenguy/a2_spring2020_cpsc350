@@ -20,12 +20,12 @@ class Board
     void write(string filename); // Writes the board to the input file
     void populate(double density); // Populates board based on density input
     bool isEmpty(); //Checks if board is empty
-    void write_char_at_index(int height, int width, char z);
-    char read_char_at_index(int height, int width);
-    void set_array(char** input_array);
-    char** get_array();
-    bool check_for_equality(char** input_array);
-    void zero_out_array();
+    void writeAtIndex(int height, int width, char z); //Writes to board
+    char readAtIndex(int height, int width); //Reads from board
+    void setArray(char** input_array); //Sets this board array to input
+    char** getArray(); //Returns the board array
+    bool isEqual(char** input_array); //Checks equality of arrays
+    void zero(); //Removes all 'X' from an array
 
   private:
     char** m_array; // 2D array dynamically allocated during runtime

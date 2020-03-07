@@ -16,8 +16,8 @@ class ReadFile
     Board* return_board(string path);
 
   private:
-    string path;
-    Board* board_to_return;
+    string m_path;
+    Board* m_boardToReturn;
 };
 
 #endif
