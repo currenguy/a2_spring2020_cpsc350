@@ -143,15 +143,27 @@ void Game::start()
   {
     int height = 5;
     int width = 5;
-    double pop_density = 0.25;
-    ClassicMode* c = new ClassicMode(height,width,pop_density);
-    for (int i = 0; i < 5; ++i)
+    double density = 0.25;
+    ClassicMode* c = new ClassicMode(height, width, density);
+    int iter = 0;
+    while (!c->isDone())
     {
-      cout << "Iteration: " << i <<endl;
+      cout << "Iteration: " << iter << endl;
       c->evolve();
-      if (c->isDone()) break;
-
+      ++iter;
     }
+    cout << "Iteration: " << iter << endl;
+    c->getCurrentBoard()->print();
+
+    // for (int i = 0; i < 5; ++i)
+    // {
+    //   cout << "Iteration: " << i << endl;
+    //   c->evolve();
+    //   if (c->isDone())
+    //   {
+    //     break;
+    //   }
+    // }
 
     delete c;
   }
