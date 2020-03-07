@@ -129,3 +129,14 @@ bool Board:: check_for_equality(char** input_array)
   if (differences > 0) return false;
   else return true;
 }
+
+void Board::zero_out_array()
+{
+  for (int i = 0; i < m_height; ++i)
+  {
+    for (int j = 0; j < m_width; ++j)
+    {
+      m_array[i][j] = '-';
+    }
+  }
+}

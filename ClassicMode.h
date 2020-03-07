@@ -17,6 +17,7 @@ class ClassicMode: public Mode
     Board* m_nextGen;
     int board_height;
     int board_width;
+    
 
 };
 

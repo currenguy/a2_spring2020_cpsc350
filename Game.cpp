@@ -143,13 +143,14 @@ void Game::start()
   {
     int height = 5;
     int width = 5;
-    double pop_density = 0.55;
+    double pop_density = 0.25;
     ClassicMode* c = new ClassicMode(height,width,pop_density);
     for (int i = 0; i < 5; ++i)
     {
       cout << "Iteration: " << i <<endl;
       c->evolve();
-      
+      if (c->isDone()) break;
+
     }
 
     delete c;

@@ -25,6 +25,7 @@ class Board
     void set_array(char** input_array);
     char** get_array();
     bool check_for_equality(char** input_array);
+    void zero_out_array();
 
   private:
     char** m_array; // 2D array dynamically allocated during runtime

@@ -178,14 +178,15 @@ void ClassicMode::evolve()
   cout << "----------------" << endl;
   m_nextGen->print();
 
-  cout << m_currentGen->check_for_equality(m_nextGen->get_array()) << endl;
   m_currentGen->set_array(m_nextGen->get_array());
-  cout << m_currentGen->check_for_equality(m_nextGen->get_array()) << endl;
+
 }
 
 bool ClassicMode::isDone()
 {
-
-
-  //if (m_currentGen->isEmpty() || (m_currentGen))
+  if (m_currentGen->isEmpty() || (m_currentGen->check_for_equality(m_nextGen->get_array())))
+  {
+    return true;
+  }
+  else return false;
 }
