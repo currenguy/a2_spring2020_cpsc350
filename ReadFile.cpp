@@ -24,14 +24,13 @@ Board* ReadFile:: return_board(string path)
 
   int iteration_count = 0;
   //board creation variables
-  int height_of_board_in_file = 0;
-  int width_of_board_in_file = 0;
+  height_of_board_in_file = 0;
+  width_of_board_in_file = 0;
 
 	while(getline(myfile, line))
   {
     if (iteration_count == 0)
     {
-      cout << line << endl;
       height_of_board_in_file = stoi(line);
     }
     if (iteration_count == 1)
@@ -45,7 +44,6 @@ Board* ReadFile:: return_board(string path)
       {
         if (line.at(i) == 'X')
         {
-          cout << "iT " << iteration_count<< endl;
           m_boardToReturn->writeAtIndex(iteration_count-2, i, 'X');
         }
       }
@@ -53,6 +51,5 @@ Board* ReadFile:: return_board(string path)
     iteration_count++;
 	}
 
-  m_boardToReturn->print();
   return m_boardToReturn;
 }

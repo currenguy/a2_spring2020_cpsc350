@@ -12,6 +12,17 @@ ClassicMode::ClassicMode(int height, int width, double density)
   m_nextGen = new Board(m_boardHeight, m_boardWidth);
 }
 
+ClassicMode:: ClassicMode(string path)
+{
+  ReadFile* x = new ReadFile();
+
+  m_currentGen = x->return_board(path);
+  m_nextGen = new Board(m_currentGen->getHeight(), m_currentGen->getWidth());
+
+  m_boardHeight = m_currentGen->getHeight();
+  m_boardWidth = m_currentGen->getWidth();
+}
+
 ClassicMode::~ClassicMode()
 {
   //delete m_nextGen;

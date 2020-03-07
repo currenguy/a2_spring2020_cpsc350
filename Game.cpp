@@ -137,14 +137,13 @@ void Game::start()
     }
   }
 
-  cout << "Choice: " << this->m_boundMode << endl;
-
   if (this->m_boundMode == CLASSIC)
   {
     int height = 5;
     int width = 5;
-    double density = 0.25;
-    ClassicMode* c = new ClassicMode(height, width, density);
+    double density = 0.55;
+    //ClassicMode* c = new ClassicMode(height, width, density);
+    ClassicMode* c = new ClassicMode("test.txt");
     int iter = 0;
     while (!c->isDone())
     {
@@ -154,16 +153,6 @@ void Game::start()
     }
     cout << "Iteration: " << iter << endl;
     c->getCurrentBoard()->print();
-
-    // for (int i = 0; i < 5; ++i)
-    // {
-    //   cout << "Iteration: " << i << endl;
-    //   c->evolve();
-    //   if (c->isDone())
-    //   {
-    //     break;
-    //   }
-    // }
 
     delete c;
   }

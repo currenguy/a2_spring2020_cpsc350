@@ -26,6 +26,8 @@ class Board
     char** getArray(); //Returns the board array
     bool isEqual(char** input_array); //Checks equality of arrays
     void zero(); //Removes all 'X' from an array
+    int getHeight();
+    int getWidth();
 
   private:
     char** m_array; // 2D array dynamically allocated during runtime

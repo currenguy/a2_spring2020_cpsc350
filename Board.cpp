@@ -140,3 +140,13 @@ void Board::zero()
     }
   }
 }
+
+int Board::getHeight()
+{
+  return m_height;
+}
+
+int Board::getWidth()
+{
+  return m_width;
+}
