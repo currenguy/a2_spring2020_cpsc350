@@ -265,7 +265,7 @@ void Game::start()
     }
 
     cout << endl << endl << endl;
-    cout << "Simulation Started";
+    cout << "Simulation Started" << endl << endl;
 
     int gen = 0;
     ofstream outFile;
