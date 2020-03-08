@@ -36,3 +36,4 @@ Student 2
 - https://www.programiz.com/cpp-programming/library-function/cmath/floor
 - https://www.geeksforgeeks.org/c-string-class-and-its-applications/
 - https://en.cppreference.com/w/cpp/thread/condition_variable/wait
+- https://www.youtube.com/watch?v=yTk33AlatIw

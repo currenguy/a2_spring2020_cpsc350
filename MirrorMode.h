@@ -3,6 +3,7 @@
 
 #include "Board.h"
 #include "Mode.h"
+#include "ReadFile.h"
 
 class MirrorMode: public Mode
 {

@@ -5,6 +5,8 @@
 #include "Mode.h"
 #include "ReadFile.h"
 
+
+
 class ClassicMode: public Mode
 {
   public:
@@ -13,7 +15,7 @@ class ClassicMode: public Mode
     void setFileBoard(string path);
     void setRandomBoard(int height, int width, double density);
     Board* getCurrentBoard();
-    void evolve();
+    void evolve(char m, ofstream& o);
     bool isDone();
     void init_current_board_from_file(string path);
 

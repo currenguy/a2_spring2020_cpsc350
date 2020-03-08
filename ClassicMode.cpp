@@ -6,7 +6,6 @@ ClassicMode::ClassicMode()
   m_boardWidth = 0;
 }
 
-
 ClassicMode::~ClassicMode()
 {
   //delete m_nextGen;
@@ -38,10 +37,19 @@ Board* ClassicMode::getCurrentBoard()
   return m_currentGen;
 }
 
-void ClassicMode::evolve()
+void ClassicMode::evolve(char m, ofstream& o)
 {
-  cout << m_currentGen->write();
-  cout << endl << endl << endl;
+  if (m == 'a' || m == 'm')
+  {
+    cout << m_currentGen->write();
+    cout << endl << endl << endl;
+  }
+  else if (m == 'o')
+  {
+    o << m_currentGen->write();
+    o << endl << endl << endl;
+  }
+
   for (int i = 0; i < m_boardHeight; ++i)
   {
     for (int j = 0; j < m_boardWidth; ++j)

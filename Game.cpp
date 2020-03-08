@@ -119,7 +119,7 @@ void Game::start()
   isValid = false;
   cout << this->getInputFile();
 
-  //Asking user for board input file or settings
+  //Asking user for board input file
   if (userInput == INPUT)
   {
     ifstream myFile;
@@ -139,6 +139,7 @@ void Game::start()
     myFile.close();
   }
 
+  //Asking user for random board settings
   else if (userInput == RANDOM)
   {
     cout << this->getInputHeight();
@@ -264,20 +265,50 @@ void Game::start()
     }
 
     cout << endl << endl << endl;
-    cout << "Simulation Started" << endl << endl;
+    cout << "Simulation Started";
 
     int gen = 0;
+    ofstream outFile;
+    outFile.open("output.txt");
     while (!c->isDone())
     {
-      cout << "Generation " << gen << endl;
-      c->evolve();
-      ++gen;
-      std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+      if (m_viewMode == AUTO)
+      {
+        cout << "Generation " << gen << endl;
+        c->evolve('a', outFile);
+        ++gen;
+        std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+      }
+      else if (m_viewMode == MANUAL)
+      {
+        cout << "Generation " << gen << " (Press [ENTER] to continue)" << endl;
+        c->evolve('m', outFile);
+        ++gen;
+        cin.ignore();
+      }
+      else if (m_viewMode == OUTPUT)
+      {
+        outFile << "Generation " << gen << endl;
+        c->evolve('o', outFile);
+        ++gen;
+      }
     }
-    cout << "Generation " << gen << endl;
-    cout << c->getCurrentBoard()->write();
-    cout << endl << endl << "Simulation Finished" << endl;
 
+    //Outputs the final generation to output or file
+    if (m_viewMode == AUTO || m_viewMode == MANUAL)
+    {
+      cout << "Generation " << gen << endl;
+      cout << c->getCurrentBoard()->write();
+      cout << endl << endl << "Simulation Finished" << endl;
+    }
+    else if (m_viewMode == OUTPUT)
+    {
+      outFile << "Generation " << gen << endl;
+      outFile << c->getCurrentBoard()->write();
+      cout << endl << endl << "Simulation Finished" << endl << endl;
+      cout << "Contents written to \"output.txt\"" << endl << endl;
+    }
+    outFile.close();
     delete c;
   }
   else if (this->m_boundMode == DOUGHNUT)
