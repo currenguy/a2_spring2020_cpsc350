@@ -8,9 +8,10 @@
 class ClassicMode: public Mode
 {
   public:
-    ClassicMode(int height, int width, double density);
-    ClassicMode(string path);
+    ClassicMode();
     ~ClassicMode();
+    void setFileBoard(string path);
+    void setRandomBoard(int height, int width, double density);
     Board* getCurrentBoard();
     void evolve();
     bool isDone();

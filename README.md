@@ -35,3 +35,4 @@ Student 2
 - https://stackoverflow.com/questions/12657962/how-do-i-generate-a-random-number-between-two-variables-that-i-have-stored/12658029
 - https://www.programiz.com/cpp-programming/library-function/cmath/floor
 - https://www.geeksforgeeks.org/c-string-class-and-its-applications/
+- https://en.cppreference.com/w/cpp/thread/condition_variable/wait

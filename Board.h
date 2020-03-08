@@ -6,6 +6,8 @@
 #include <cmath>
 #include <cstdlib>
 #include <ctime>
+#include <thread>
+#include <chrono>
 using namespace std;
 
 //This class is used to make a Board object
@@ -17,7 +19,7 @@ class Board
     Board(int h, int w);
     ~Board();
     void print(); // Prints the board to cout
-    void write(string filename); // Writes the board to the input file
+    string write(); // Writes the board to the input file
     void populate(double density); // Populates board based on density input
     bool isEmpty(); //Checks if board is empty
     void writeAtIndex(int height, int width, char z); //Writes to board

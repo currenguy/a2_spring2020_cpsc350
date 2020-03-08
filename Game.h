@@ -21,6 +21,9 @@ class Game
     string getInputOptions();
     string getViewOptions();
     string getBoundOptions();
+    string getInputFile();
+    string getInputHeight();
+    string getInputDensity();
 
     // 1. Ask if providing a map, or random map (requires w, h, and decimal)
     // 2. Ask for the boundary mode
@@ -32,6 +35,9 @@ class Game
     inputMode m_inputMode;
     viewMode m_viewMode;
     boundMode m_boundMode;
-    float m_decimal;
+    int m_height;
+    int m_width;
+    float m_density;
+    string m_fileName;
 
 };

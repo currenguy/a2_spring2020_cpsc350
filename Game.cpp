@@ -5,7 +5,10 @@ Game::Game()
   m_inputMode = INPUT;
   m_viewMode = AUTO;
   m_boundMode = CLASSIC;
-  m_decimal = 0.0;
+  m_height = 0;
+  m_width = 0;
+  m_density = 0.0;
+  m_fileName = "";
 }
 
 Game::~Game()
@@ -52,6 +55,39 @@ string Game::getBoundOptions()
   return s;
 }
 
+string Game::getInputFile()
+{
+  string s = "";
+  s += "\n\n\n\n";
+  s += "\n\n\n\n";
+  s += "\n\n\n\n";
+  s += "\n\n\n\n";
+  s += "Type an input file name, then press [ENTER]: ";
+  return s;
+}
+
+string Game::getInputHeight()
+{
+  string s = "";
+  s += "\n\n\n\n";
+  s += "\n\n\n\n";
+  s += "\n\n\n\n";
+  s += "\n\n\n\n";
+  s += "Type the board height, then press [ENTER]: ";
+  return s;
+}
+
+string Game::getInputDensity()
+{
+  string s = "";
+  s += "\n\n\n\n";
+  s += "\n\n\n\n";
+  s += "\n\n\n\n";
+  s += "\n\n\n\n";
+  s += "Type the board density (0,1], then press [ENTER]: ";
+  return s;
+}
+
 void Game::start()
 {
   int userInput = -1;
@@ -76,6 +112,82 @@ void Game::start()
         cout << this->getInputOptions() << endl;
         cout << "INVALID INPUT. Try again." << endl;
         break;
+    }
+  }
+
+  string userFile = "";
+  isValid = false;
+  cout << this->getInputFile();
+
+  //Asking user for board input file or settings
+  if (userInput == INPUT)
+  {
+    ifstream myFile;
+    while (isValid == false)
+    {
+      cin >> userFile;
+      myFile.open(userFile);
+      if (myFile.is_open())
+      {
+        isValid = true;
+      }
+      else
+      {
+        cout << "INVALID FILE. Type an input file name, then press [ENTER]: ";
+      }
+    }
+    myFile.close();
+  }
+
+  else if (userInput == RANDOM)
+  {
+    cout << this->getInputHeight();
+    while (isValid == false)
+    {
+      cin >> userInput;
+      if (userInput > 0)
+      {
+        isValid = true;
+        this->m_height = userInput;
+      }
+      else
+      {
+        cout << "INVALID INPUT. Type the board height, then press [ENTER]: ";
+      }
+    }
+
+    isValid = false;
+    userInput = -1;
+    cout << "Type the board width, then press [ENTER]: ";
+    while (isValid == false)
+    {
+      cin >> userInput;
+      if (userInput > 0)
+      {
+        isValid = true;
+        this->m_width = userInput;
+      }
+      else
+      {
+        cout << "INVALID INPUT. Type the board height, then press [ENTER]: ";
+      }
+    }
+
+    isValid = false;
+    double userDensity = 0.0;
+    cout << "Type the board density (0,1], then press [ENTER]: ";
+    while (isValid == false)
+    {
+      cin >> userDensity;
+      if (userDensity > 0 && userDensity <= 1)
+      {
+        isValid = true;
+        this->m_density = userDensity;
+      }
+      else
+      {
+        cout << "INVALID INPUT. Type the board density (0,1], then press [ENTER]: ";
+      }
     }
   }
 
@@ -139,35 +251,47 @@ void Game::start()
 
   if (this->m_boundMode == CLASSIC)
   {
-    int height = 5;
-    int width = 5;
-    double density = 0.55;
-    //ClassicMode* c = new ClassicMode(height, width, density);
-    ClassicMode* c = new ClassicMode("test.txt");
-    int iter = 0;
+    ClassicMode* c = new ClassicMode();
+
+    if (m_inputMode == INPUT)
+    {
+      c->setFileBoard(userFile);
+    }
+
+    else if (m_inputMode == RANDOM)
+    {
+      c->setRandomBoard(m_height, m_width, m_density);
+    }
+
+    cout << endl << endl << endl;
+    cout << "Simulation Started" << endl << endl;
+
+    int gen = 0;
     while (!c->isDone())
     {
-      cout << "Iteration: " << iter << endl;
+      cout << "Generation " << gen << endl;
       c->evolve();
-      ++iter;
+      ++gen;
+      std::this_thread::sleep_for(std::chrono::milliseconds(1000));
     }
-    cout << "Iteration: " << iter << endl;
-    c->getCurrentBoard()->print();
+    cout << "Generation " << gen << endl;
+    cout << c->getCurrentBoard()->write();
+    cout << endl << endl << "Simulation Finished" << endl;
 
     delete c;
   }
   else if (this->m_boundMode == DOUGHNUT)
   {
     DoughnutMode* c = new DoughnutMode("test.txt");
-    int iter = 0;
-    
+    int gen = 0;
+
     while (!c->isDone())
     {
-      cout << "Iteration: " << iter << endl;
+      cout << "Iteration: " << gen << endl;
       c->evolve();
-      ++iter;
+      ++gen;
     }
-    cout << "Iteration: " << iter << endl;
+    cout << "Iteration: " << gen << endl;
     c->getCurrentBoard()->print();
 
     delete c;

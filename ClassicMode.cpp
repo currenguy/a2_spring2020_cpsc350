@@ -1,18 +1,19 @@
 #include "ClassicMode.h"
 
-ClassicMode::ClassicMode(int height, int width, double density)
+ClassicMode::ClassicMode()
 {
-  m_boardHeight = height;
-  m_boardWidth = width;
-
-  cout << "Made Classic Game!" << endl;
-  m_currentGen = new Board(m_boardHeight, m_boardWidth);
-  m_currentGen->populate(density);
-
-  m_nextGen = new Board(m_boardHeight, m_boardWidth);
+  m_boardHeight = 0;
+  m_boardWidth = 0;
 }
 
-ClassicMode:: ClassicMode(string path)
+
+ClassicMode::~ClassicMode()
+{
+  //delete m_nextGen;
+  //delete m_currentGen;
+}
+
+void ClassicMode::setFileBoard(string path)
 {
   ReadFile* x = new ReadFile();
 
@@ -23,10 +24,13 @@ ClassicMode:: ClassicMode(string path)
   m_boardWidth = m_currentGen->getWidth();
 }
 
-ClassicMode::~ClassicMode()
+void ClassicMode::setRandomBoard(int height, int width, double density)
 {
-  //delete m_nextGen;
-  //delete m_currentGen;
+  m_boardHeight = height;
+  m_boardWidth = width;
+  m_currentGen = new Board(m_boardHeight, m_boardWidth);
+  m_currentGen->populate(density);
+  m_nextGen = new Board(m_boardHeight, m_boardWidth);
 }
 
 Board* ClassicMode::getCurrentBoard()
@@ -36,8 +40,8 @@ Board* ClassicMode::getCurrentBoard()
 
 void ClassicMode::evolve()
 {
-  this->m_currentGen->print();
-  cout << endl << endl << "----------------" << endl << endl;
+  cout << m_currentGen->write();
+  cout << endl << endl << endl;
   for (int i = 0; i < m_boardHeight; ++i)
   {
     for (int j = 0; j < m_boardWidth; ++j)
@@ -202,7 +206,6 @@ void ClassicMode::evolve()
       }
     }
   }
-
   m_currentGen->setArray(m_nextGen->getArray());
   m_nextGen->zero();
 }

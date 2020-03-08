@@ -30,7 +30,6 @@ Board::Board(int h, int w)
       m_array[i][j] = '-';
     }
   }
-  cout << "Made board" << endl;
 }
 
 Board::~Board()
@@ -56,6 +55,21 @@ void Board::print()
   }
 }
 
+string Board::write()
+{
+  string s = "";
+  for (int i = 0; i < this->m_height; ++i)
+  {
+    for (int j = 0; j < this->m_width; ++j)
+    {
+      s += this->m_array[i][j];
+      s += " ";
+    }
+    s += '\n';
+  }
+  return s;
+}
+
 void Board:: populate(double density)
 {
   //seeding rand with time
@@ -63,13 +77,25 @@ void Board:: populate(double density)
   int totalCells = this->m_height * this->m_width;
   int cellsToFill = round(totalCells * density);
   int cellsFilled = 0;
-
-  for (int i = 0; i < cellsToFill; ++i)
+  if (density == 1.0)
   {
-    int randomRow = rand() % this->m_height;
-    int randomColumn = rand() % this->m_width;
+    for (int i = 0; i < this->m_height; ++i)
+    {
+      for (int j = 0; j < this->m_width; ++j)
+      {
+        this->m_array[i][j] = 'X';
+      }
+    }
+  }
+  else
+  {
+    for (int i = 0; i < cellsToFill; ++i)
+    {
+      int randomRow = rand() % this->m_height;
+      int randomColumn = rand() % this->m_width;
 
-    this->m_array[randomRow][randomColumn] = 'X';
+      this->m_array[randomRow][randomColumn] = 'X';
+    }
   }
 }
 

@@ -50,6 +50,7 @@ Board* ReadFile:: return_board(string path)
     }
     iteration_count++;
 	}
+  myfile.close();
 
   return m_boardToReturn;
 }
