@@ -144,16 +144,17 @@ char** Board::getArray()
 
 bool Board:: isEqual(char** input_array)
 {
-  int differences = 0;
   for (int i = 0; i < m_height; ++i)
   {
     for (int j = 0; j < m_width; ++j)
     {
-      if (m_array[i][j] != input_array[i][j]) differences++;
+      if (m_array[i][j] != input_array[i][j])
+      {
+        return false;
+      }
     }
   }
-  if (differences > 0) return false;
-  else return true;
+  return true;
 }
 
 void Board::zero()
