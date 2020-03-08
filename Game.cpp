@@ -313,18 +313,63 @@ void Game::start()
   }
   else if (this->m_boundMode == DOUGHNUT)
   {
-    DoughnutMode* c = new DoughnutMode("test.txt");
-    int gen = 0;
+    DoughnutMode* c = new DoughnutMode();
 
+    if (m_inputMode == INPUT)
+    {
+      c->setFileBoard(userFile);
+    }
+
+    else if (m_inputMode == RANDOM)
+    {
+      c->setRandomBoard(m_height, m_width, m_density);
+    }
+
+    cout << endl << endl << endl;
+    cout << "Simulation Started" << endl << endl;
+
+    int gen = 0;
+    ofstream outFile;
+    outFile.open("output.txt");
     while (!c->isDone())
     {
-      cout << "Iteration: " << gen << endl;
-      c->evolve();
-      ++gen;
+      if (m_viewMode == AUTO)
+      {
+        cout << "Generation " << gen << endl;
+        c->evolve('a', outFile);
+        ++gen;
+        std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+      }
+      else if (m_viewMode == MANUAL)
+      {
+        cout << "Generation " << gen << " (Press [ENTER] to continue)" << endl;
+        c->evolve('m', outFile);
+        ++gen;
+        cin.ignore();
+      }
+      else if (m_viewMode == OUTPUT)
+      {
+        outFile << "Generation " << gen << endl;
+        c->evolve('o', outFile);
+        ++gen;
+      }
     }
-    cout << "Iteration: " << gen << endl;
-    c->getCurrentBoard()->print();
 
+    //Outputs the final generation to output or file
+    if (m_viewMode == AUTO || m_viewMode == MANUAL)
+    {
+      cout << "Generation " << gen << endl;
+      cout << c->getCurrentBoard()->write();
+      cout << endl << endl << "Simulation Finished" << endl;
+    }
+    else if (m_viewMode == OUTPUT)
+    {
+      outFile << "Generation " << gen << endl;
+      outFile << c->getCurrentBoard()->write();
+      cout << endl << endl << "Simulation Finished" << endl << endl;
+      cout << "Contents written to \"output.txt\"" << endl << endl;
+    }
+    outFile.close();
     delete c;
   }
   else if (this->m_boundMode == MIRROR)

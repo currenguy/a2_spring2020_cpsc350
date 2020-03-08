@@ -7,9 +7,8 @@ DoughnutMode::DoughnutMode()
   Board* m_nextGen = new Board();
 }
 
-DoughnutMode::DoughnutMode(string path)
+void DoughnutMode::setFileBoard(string path)
 {
-  cout << "Made Doughnut Game!" << endl;
   ReadFile* x = new ReadFile();
 
   m_currentGen = x->return_board(path);
@@ -25,10 +24,34 @@ DoughnutMode::~DoughnutMode()
   //delete m_nextGen;
 }
 
-void DoughnutMode::evolve()
+void DoughnutMode::setRandomBoard(int height, int width, double density)
 {
-  this->m_currentGen->print();
-  cout << endl << endl << "----------------" << endl << endl;
+  m_boardHeight = height;
+  m_boardWidth = width;
+  m_currentGen = new Board(m_boardHeight, m_boardWidth);
+  m_currentGen->populate(density);
+  m_nextGen = new Board(m_boardHeight, m_boardWidth);
+}
+
+Board* DoughnutMode::getCurrentBoard()
+{
+  return m_currentGen;
+}
+
+void DoughnutMode::evolve(char m, ofstream& o)
+{
+
+  if (m == 'a' || m == 'm')
+  {
+    cout << m_currentGen->write();
+    cout << endl << endl << endl;
+  }
+  else if (m == 'o')
+  {
+    o << m_currentGen->write();
+    o << endl << endl << endl;
+  }
+
   for (int i = 0; i < m_boardHeight; ++i)
   {
     for (int j = 0; j < m_boardWidth; ++j)
@@ -254,9 +277,4 @@ bool DoughnutMode::isDone()
   {
     return false;
   }
-}
-
-Board* DoughnutMode::getCurrentBoard()
-{
-  return m_currentGen;
 }

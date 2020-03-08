@@ -10,11 +10,12 @@ class DoughnutMode: public Mode
 {
   public:
     DoughnutMode();
-    DoughnutMode(string path);
     ~DoughnutMode();
-    void evolve();
-    bool isDone();
+    void setFileBoard(string path);
+    void setRandomBoard(int height, int width, double density);
     Board* getCurrentBoard();
+    void evolve(char m, ofstream& o);
+    bool isDone();
 
   private:
     Board* m_currentGen;
