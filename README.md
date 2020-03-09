@@ -31,14 +31,18 @@ Student 2
 - DoughnutMode.cpp
 - MirrorMode.h
 - MirrorMode.cpp
+- Makefile
 - test.txt (optional, sample input file)
 
 
 ## 3. DESCRIPTION
 - This is The Game of Life.
 - How to use:
-  1. Type "make all" in your command line
-  2. Follow the menu prompts
+  1. Open terminal
+  2. Change into the directory containing source files
+  3. Type "make all" into your command line
+  4. Type "./assignment2.out" into your command line
+  5. Follow the menu prompts
 - Important Notes:
   - For board input files, the file must have the height on the first line, width on the second line, and the each row on the following lines. Indicate empty cells with '-' and occupied cells with 'X.' See the sample input file for reference.
 
