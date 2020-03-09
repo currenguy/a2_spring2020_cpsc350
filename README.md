@@ -15,16 +15,32 @@ Student 2
 - Chapman Email: mathias@chapman.edu
 
 ## 2. SOURCE FILES
+- README.md
 - Main.cpp
 - Game.h
 - Game.cpp
 - Board.h
 - Board.cpp
-- Cell.h
-- Cell.cpp
+- Mode.h
+- Mode.cpp
+- ReadFile.h
+- ReadFile.cpp
+- ClassicMode.h
+- ClassicMode.cpp
+- DoughnutMode.h
+- DoughnutMode.cpp
+- MirrorMode.h
+- MirrorMode.cpp
+- test.txt (optional, sample input file)
+
 
 ## 3. DESCRIPTION
-- This program demonstrates The Game of Life.
+- This is The Game of Life.
+- How to use:
+  1. Type "make all" in your command line
+  2. Follow the menu prompts
+- Important Notes:
+  - For board input files, the file must have the height on the first line, width on the second line, and the each row on the following lines. Indicate empty cells with '-' and occupied cells with 'X.' See the sample input file for reference.
 
 ## 4. REFERENCES
 - Data Structures & Algorithms
