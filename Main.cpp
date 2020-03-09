@@ -5,35 +5,65 @@
 int main(int argc, char** argv)
 {
 
-  //fix the array setting value cause it's broken
-  //ReadFile* read_ob = new ReadFile();
-  //cout << read_ob->return_board("./test.txt") << endl;
 
-  //
   // Board* b = new Board(5, 5);
-  // b->populate(0.5);
+  // b->writeAtIndex(0, 0, 'X');
   // b->print();
   //
+  //
+  //
+  // cout << endl << endl;
+  //
+  //
+  //
   // Board* c = new Board(5, 5);
+  // c->writeAtIndex(0, 0, 'X');
   // c->print();
   //
   //
   //
-  // cout << c->read_char_at_index(2,3) << endl;
+  // cout << "EQUAL? : " << b->isEqual(c->getArray()) << endl;
+  //
+  // delete b;
+  // delete c;
+
+
+
+
+  ClassicMode* c = new ClassicMode();
+  c->setFileBoard("test.txt");
+
+  cout << endl << endl << endl;
+  cout << "Simulation Started" << endl << endl;
+
+
+  ofstream outFile;
+  int gen = 0;
+  while (!c->isDone())
+  {
+    cout << "Generation " << gen << endl;
+    c->evolve('a', outFile, gen);
+    ++gen;
+    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+  }
+
+  cout << "Generation " << gen << endl;
+  cout << c->getCurrentBoard()->write();
+  cout << endl << endl << "Simulation Finished" << endl;
+
+
+
+
+
+
+
 
   // Testing Game Object
-  Game* g = new Game();
-  g->start();
-  delete g;
+  // Game* g = new Game();
+  // g->start();
+  // delete g;
 
-  //Testing Board Object
-  /*
-  Board* b = new Board(5, 5);
-  b->populate(0.5);
-  b->print();
-  cout << b->isEmpty()<< endl;
-  delete b;
-  */
+
 
   return 0;
 }

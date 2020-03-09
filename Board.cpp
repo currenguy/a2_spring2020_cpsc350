@@ -39,8 +39,6 @@ Board::~Board()
     delete[] this->m_array[i];
   }
   delete[] this->m_array;
-
-  cout << "Destructed Board" << endl;
 }
 
 void Board::print()

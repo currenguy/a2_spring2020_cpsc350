@@ -275,21 +275,21 @@ void Game::start()
       if (m_viewMode == AUTO)
       {
         cout << "Generation " << gen << endl;
-        c->evolve('a', outFile);
+        c->evolve('a', outFile, gen);
         ++gen;
         std::this_thread::sleep_for(std::chrono::milliseconds(1000));
       }
       else if (m_viewMode == MANUAL)
       {
         cout << "Generation " << gen << " (Press [ENTER] to continue)" << endl;
-        c->evolve('m', outFile);
+        c->evolve('m', outFile, gen);
         ++gen;
         cin.ignore();
       }
       else if (m_viewMode == OUTPUT)
       {
         outFile << "Generation " << gen << endl;
-        c->evolve('o', outFile);
+        c->evolve('o', outFile, gen);
         ++gen;
       }
     }
