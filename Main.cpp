@@ -30,26 +30,26 @@ int main(int argc, char** argv)
 
 
 
-  ClassicMode* c = new ClassicMode();
-  c->setFileBoard("test.txt");
-
-  cout << endl << endl << endl;
-  cout << "Simulation Started" << endl << endl;
-
-
-  ofstream outFile;
-  int gen = 0;
-  while (!c->isDone())
-  {
-    cout << "Generation " << gen << endl;
-    c->evolve('a', outFile, gen);
-    ++gen;
-    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
-  }
-
-  cout << "Generation " << gen << endl;
-  cout << c->getCurrentBoard()->write();
-  cout << endl << endl << "Simulation Finished" << endl;
+  // ClassicMode* c = new ClassicMode();
+  // c->setFileBoard("test.txt");
+  //
+  // cout << endl << endl << endl;
+  // cout << "Simulation Started" << endl << endl;
+  //
+  //
+  // ofstream outFile;
+  // int gen = 0;
+  // while (!c->isDone())
+  // {
+  //   cout << "Generation " << gen << endl;
+  //   c->evolve('a', outFile, gen);
+  //   ++gen;
+  //   std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+  // }
+  //
+  // cout << "Generation " << gen << endl;
+  // cout << c->getCurrentBoard()->write();
+  // cout << endl << endl << "Simulation Finished" << endl;
 
 
 
@@ -59,9 +59,9 @@ int main(int argc, char** argv)
 
 
   // Testing Game Object
-  // Game* g = new Game();
-  // g->start();
-  // delete g;
+  Game* g = new Game();
+  g->start();
+  delete g;
 
 
 

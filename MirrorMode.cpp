@@ -2,9 +2,14 @@
 
 MirrorMode::MirrorMode()
 {
-  cout << "Made Mirror Game!" << endl;
-  Board* m_currentGen = new Board();
-  Board* m_nextGen = new Board();
+  m_boardHeight = 0;
+  m_boardWidth = 0;
+}
+
+MirrorMode::~MirrorMode()
+{
+  //delete m_currentGen;
+  //delete m_nextGen;
 }
 
 void MirrorMode::setFileBoard(string path)
@@ -13,15 +18,10 @@ void MirrorMode::setFileBoard(string path)
 
   m_currentGen = x->return_board(path);
   m_nextGen = new Board(m_currentGen->getHeight(), m_currentGen->getWidth());
-
+  m_loopChecker = new Board(m_boardHeight, m_boardWidth);
+  
   m_boardHeight = m_currentGen->getHeight();
   m_boardWidth = m_currentGen->getWidth();
-}
-
-MirrorMode::~MirrorMode()
-{
-  //delete m_currentGen;
-  //delete m_nextGen;
 }
 
 void MirrorMode::setRandomBoard(int height, int width, double density)
@@ -31,6 +31,7 @@ void MirrorMode::setRandomBoard(int height, int width, double density)
   m_currentGen = new Board(m_boardHeight, m_boardWidth);
   m_currentGen->populate(density);
   m_nextGen = new Board(m_boardHeight, m_boardWidth);
+  m_loopChecker = new Board(m_boardHeight, m_boardWidth);
 }
 
 Board* MirrorMode::getCurrentBoard()
@@ -38,7 +39,7 @@ Board* MirrorMode::getCurrentBoard()
   return m_currentGen;
 }
 
-void MirrorMode::evolve(char m, ofstream& o)
+void MirrorMode::evolve(char m, ofstream& o, int g)
 {
 
   if (m == 'a' || m == 'm')
@@ -251,14 +252,26 @@ void MirrorMode::evolve(char m, ofstream& o)
       }
     }
   }
-
+  //Switches the current and next boards, allowing check for no movement
+  Board* temp = new Board(m_boardHeight, m_boardWidth);
+  temp->setArray(m_currentGen->getArray());
   m_currentGen->setArray(m_nextGen->getArray());
-  m_nextGen->zero();
+  m_nextGen->setArray(temp->getArray());
+
+  //Sets m_loopChecker to next generation only on odd generations
+  if (g % 2 == 0)
+  {
+    m_loopChecker->setArray(m_nextGen->getArray());
+  }
+  delete temp;
+  // cout << "CURRENT:" << endl << m_currentGen->write() << endl;
+  // cout << "NEXT:" << endl << m_nextGen->write() << endl;
+
 }
 
 bool MirrorMode::isDone()
 {
-  if (m_currentGen->isEmpty() || (m_currentGen->isEqual(m_nextGen->getArray())))
+  if (m_currentGen->isEmpty() || (m_currentGen->isEqual(m_nextGen->getArray())) || (m_currentGen->isEqual(m_loopChecker->getArray())))
   {
     return true;
   }
