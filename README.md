@@ -46,7 +46,7 @@ Student 2
 - Important Notes:
   - For board input files, the file must have the height on the first line, width on the second line, and the each row on the following lines. Indicate empty cells with '-' and occupied cells with 'X.' See the sample input file for reference.
   - The game will terminate infinitely looping generations (such as the spaceship shape) after 2000 generations.
-  - Two-phase loops will only last for 10 repetitions.
+  - Two-phase loops will only last for 4 repetitions.
 
 ## 4. REFERENCES
 - Data Structures & Algorithms
