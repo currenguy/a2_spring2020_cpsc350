@@ -1,7 +1,6 @@
 #include "Board.h"
 
-//in board: make a fucntion that pulls from file
-
+//Default constructor
 Board::Board()
 {
   m_height = 1;
@@ -17,6 +16,7 @@ Board::Board()
   }
 }
 
+//Overloaded constructor
 Board::Board(int h, int w)
 {
   m_height = h;
@@ -32,6 +32,7 @@ Board::Board(int h, int w)
   }
 }
 
+//Destructor
 Board::~Board()
 {
   for (int i = 0; i < this->m_height; ++i)
@@ -41,6 +42,7 @@ Board::~Board()
   delete[] this->m_array;
 }
 
+// Prints the board to cout
 void Board::print()
 {
   for (int i = 0; i < this->m_height; ++i)
@@ -53,6 +55,7 @@ void Board::print()
   }
 }
 
+//Returns a string of the board
 string Board::write()
 {
   string s = "";
@@ -68,6 +71,7 @@ string Board::write()
   return s;
 }
 
+// Populates board based on density input
 void Board:: populate(double density)
 {
   //seeding rand with time
@@ -97,6 +101,7 @@ void Board:: populate(double density)
   }
 }
 
+//Checks if board is empty
 bool Board:: isEmpty()
 {
   int populated_cell_count = 0;
@@ -111,18 +116,21 @@ bool Board:: isEmpty()
   else return false;
 }
 
+//Writes to board
 void Board:: writeAtIndex(int height, int width, char z)
 {
   m_array[height][width] = z;
   //cout << "Wrote" << endl;
 }
 
+//Reads from board
 char Board:: readAtIndex(int height, int width)
 {
   return m_array[height][width];
   //cout << "read" << endl;
 }
 
+//Sets this board array to input
 void Board::setArray(char** input_array)
 {
   for (int i = 0; i < m_height; ++i)
@@ -135,11 +143,13 @@ void Board::setArray(char** input_array)
 
 }
 
+ //Returns the board array
 char** Board::getArray()
 {
   return m_array;
 }
 
+//Checks equality of arrays
 bool Board:: isEqual(char** input_array)
 {
   for (int i = 0; i < m_height; ++i)
@@ -155,6 +165,7 @@ bool Board:: isEqual(char** input_array)
   return true;
 }
 
+//Removes all 'X' from an array
 void Board::zero()
 {
   for (int i = 0; i < m_height; ++i)
@@ -166,11 +177,13 @@ void Board::zero()
   }
 }
 
+//Returns the height of the board
 int Board::getHeight()
 {
   return m_height;
 }
 
+//Returns the width of the board
 int Board::getWidth()
 {
   return m_width;

@@ -10,9 +10,9 @@
 class ClassicMode: public Mode
 {
   public:
-    ClassicMode();
-    ~ClassicMode();
-    void setFileBoard(string path);
+    ClassicMode(); //Default constructor
+    ~ClassicMode(); //Destructor
+    void setFileBoard(string path); //Sets board from a file
     void setRandomBoard(int height, int width, double density);
     Board* getCurrentBoard();
     void evolve(char m, ofstream& o, int g);

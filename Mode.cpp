@@ -10,7 +10,22 @@ Mode::~Mode()
 
 }
 
-void Mode::evolve()
+void Mode::setFileBoard(string path)
+{
+
+}
+
+void Mode::setRandomBoard(int height, int width, double density)
+{
+
+}
+
+Board* Mode::getCurrentBoard()
+{
+
+}
+
+void Mode::evolve(char m, ofstream& o, int g)
 {
 
 }

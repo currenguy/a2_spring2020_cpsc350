@@ -2,12 +2,14 @@
 
 ReadFile:: ReadFile()
 {
-
+  m_path = "";
+  m_fileBoardHeight = 0;
+  m_fileBoardWidth = 0;
 }
 
 ReadFile:: ~ReadFile()
 {
-
+  delete m_boardToReturn;
 }
 
 Board* ReadFile:: return_board(string path)
@@ -22,33 +24,33 @@ Board* ReadFile:: return_board(string path)
      exit(EXIT_FAILURE);
   }
 
-  int iteration_count = 0;
+  int iterationCount = 0;
   //board creation variables
-  height_of_board_in_file = 0;
-  width_of_board_in_file = 0;
+  m_fileBoardHeight = 0;
+  m_fileBoardWidth = 0;
 
 	while(getline(myfile, line))
   {
-    if (iteration_count == 0)
+    if (iterationCount == 0)
     {
-      height_of_board_in_file = stoi(line);
+      m_fileBoardHeight = stoi(line);
     }
-    if (iteration_count == 1)
+    if (iterationCount == 1)
     {
-      width_of_board_in_file = stoi(line);
-      m_boardToReturn = new Board(height_of_board_in_file, width_of_board_in_file);
+      m_fileBoardWidth = stoi(line);
+      m_boardToReturn = new Board(m_fileBoardHeight, m_fileBoardWidth);
     }
     else
     {
-      for (int i = 0; i < width_of_board_in_file; ++i)
+      for (int i = 0; i < m_fileBoardWidth; ++i)
       {
         if (line.at(i) == 'X')
         {
-          m_boardToReturn->writeAtIndex(iteration_count-2, i, 'X');
+          m_boardToReturn->writeAtIndex(iterationCount-2, i, 'X');
         }
       }
     }
-    iteration_count++;
+    iterationCount++;
 	}
   myfile.close();
 

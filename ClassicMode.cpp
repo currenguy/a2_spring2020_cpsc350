@@ -8,8 +8,9 @@ ClassicMode::ClassicMode()
 
 ClassicMode::~ClassicMode()
 {
-  //delete m_nextGen;
-  //delete m_currentGen;
+  delete m_currentGen;
+  delete m_nextGen;
+  delete m_loopChecker;
 }
 
 void ClassicMode::setFileBoard(string path)

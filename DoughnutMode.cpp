@@ -8,8 +8,9 @@ DoughnutMode::DoughnutMode()
 
 DoughnutMode::~DoughnutMode()
 {
-  //delete m_currentGen;
-  //delete m_nextGen;
+  delete m_currentGen;
+  delete m_nextGen;
+  delete m_loopChecker;
 }
 
 void DoughnutMode::setFileBoard(string path)

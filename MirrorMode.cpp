@@ -8,8 +8,9 @@ MirrorMode::MirrorMode()
 
 MirrorMode::~MirrorMode()
 {
-  //delete m_currentGen;
-  //delete m_nextGen;
+  delete m_currentGen;
+  delete m_nextGen;
+  delete m_loopChecker;
 }
 
 void MirrorMode::setFileBoard(string path)

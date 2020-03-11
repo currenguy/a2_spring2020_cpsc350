@@ -15,11 +15,11 @@ using namespace std;
 class Board
 {
   public:
-    Board();
-    Board(int h, int w);
-    ~Board();
+    Board(); //Default constructor
+    Board(int h, int w); //Overloaded constructor
+    ~Board(); //Destructor
     void print(); // Prints the board to cout
-    string write(); // Writes the board to the input file
+    string write(); // Returns a string of the board
     void populate(double density); // Populates board based on density input
     bool isEmpty(); //Checks if board is empty
     void writeAtIndex(int height, int width, char z); //Writes to board
@@ -28,8 +28,8 @@ class Board
     char** getArray(); //Returns the board array
     bool isEqual(char** input_array); //Checks equality of arrays
     void zero(); //Removes all 'X' from an array
-    int getHeight();
-    int getWidth();
+    int getHeight(); //Returns the height of the board
+    int getWidth(); //Returns the width of the board
 
   private:
     char** m_array; // 2D array dynamically allocated during runtime
