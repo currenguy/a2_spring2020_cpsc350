@@ -1,4 +1,12 @@
-// #include "Mode.h"
+// Student-1-Name: Curren Taber
+// Student-1-ID: 002325149
+// Student-2-Name: Oliver Mathias
+// Student-2-ID: 002289410
+// Prof: Rene German
+// Class: CPSC 350-1
+// Date: 3-11-2020
+// Assignment: Game of Life
+
 #include "MirrorMode.h"
 #include "ClassicMode.h"
 #include "DoughnutMode.h"
