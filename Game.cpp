@@ -270,14 +270,14 @@ void Game::start()
     int gen = 0;
     ofstream outFile;
     outFile.open("output.txt");
-    while (!c->isDone())
+    while (!c->isDone() && gen < 2000)
     {
       if (m_viewMode == AUTO)
       {
         cout << "Generation " << gen << endl;
         c->evolve('a', outFile, gen);
         ++gen;
-        std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+        std::this_thread::sleep_for(std::chrono::milliseconds(200));
       }
       else if (m_viewMode == MANUAL)
       {
@@ -331,14 +331,14 @@ void Game::start()
     int gen = 0;
     ofstream outFile;
     outFile.open("output.txt");
-    while (!c->isDone())
+    while (!c->isDone() && gen < 2000)
     {
       if (m_viewMode == AUTO)
       {
         cout << "Generation " << gen << endl;
         c->evolve('a', outFile, gen);
         ++gen;
-        std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+        std::this_thread::sleep_for(std::chrono::milliseconds(200));
       }
       else if (m_viewMode == MANUAL)
       {
@@ -393,14 +393,14 @@ void Game::start()
       int gen = 0;
       ofstream outFile;
       outFile.open("output.txt");
-      while (!c->isDone())
+      while (!c->isDone() && gen < 2000)
       {
         if (m_viewMode == AUTO)
         {
           cout << "Generation " << gen << endl;
           c->evolve('a', outFile, gen);
           ++gen;
-          std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+          std::this_thread::sleep_for(std::chrono::milliseconds(200));
         }
         else if (m_viewMode == MANUAL)
         {

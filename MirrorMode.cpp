@@ -19,7 +19,7 @@ void MirrorMode::setFileBoard(string path)
   m_currentGen = x->return_board(path);
   m_nextGen = new Board(m_currentGen->getHeight(), m_currentGen->getWidth());
   m_loopChecker = new Board(m_boardHeight, m_boardWidth);
-  
+
   m_boardHeight = m_currentGen->getHeight();
   m_boardWidth = m_currentGen->getWidth();
 }
@@ -259,7 +259,7 @@ void MirrorMode::evolve(char m, ofstream& o, int g)
   m_nextGen->setArray(temp->getArray());
 
   //Sets m_loopChecker to next generation only on odd generations
-  if (g % 2 == 0)
+  if (g % 10 == 0)
   {
     m_loopChecker->setArray(m_nextGen->getArray());
   }

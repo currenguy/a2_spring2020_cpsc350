@@ -224,7 +224,7 @@ void ClassicMode::evolve(char m, ofstream& o, int g)
   m_nextGen->setArray(temp->getArray());
 
   //Sets m_loopChecker to next generation only on odd generations
-  if (g % 2 == 0)
+  if (g % 10 == 0)
   {
     m_loopChecker->setArray(m_nextGen->getArray());
   }
