@@ -7,17 +7,19 @@
 // Date: 3-11-2020
 // Assignment: Game of Life
 
-//this is the game mode that double counts neighboring cells on the edges
-//of the board, in essence simulating a 'mirror' effect
+/* This is the game mode that reflects cells on the edges with themselves,
+   in essence simulating a 'mirror' effect. */
 
 #include "MirrorMode.h"
 
+//Constructor
 MirrorMode::MirrorMode()
 {
   m_boardHeight = 0;
   m_boardWidth = 0;
 }
 
+//Destructor
 MirrorMode::~MirrorMode()
 {
   delete m_currentGen;
@@ -25,7 +27,7 @@ MirrorMode::~MirrorMode()
   delete m_loopChecker;
 }
 
-//sets current board to equal the one in file
+//Sets current board to equal the one in file
 void MirrorMode::setFileBoard(string path)
 {
   ReadFile* x = new ReadFile();
@@ -38,7 +40,7 @@ void MirrorMode::setFileBoard(string path)
   m_boardWidth = m_currentGen->getWidth();
 }
 
-//randomizes the current board, and matches size of next board
+//Randomizes the current board, and matches size of next board
 void MirrorMode::setRandomBoard(int height, int width, double density)
 {
   m_boardHeight = height;
@@ -49,15 +51,15 @@ void MirrorMode::setRandomBoard(int height, int width, double density)
   m_loopChecker = new Board(m_boardHeight, m_boardWidth);
 }
 
+//Returns current board
 Board* MirrorMode::getCurrentBoard()
 {
   return m_currentGen;
 }
 
-//contains the evolve rules for mirror mode
+//Contains the evolve rules for mirror mode
 void MirrorMode::evolve(char m, ofstream& o, int g)
 {
-
   if (m == 'a' || m == 'm')
   {
     cout << m_currentGen->write();
@@ -73,14 +75,12 @@ void MirrorMode::evolve(char m, ofstream& o, int g)
   {
     for (int j = 0; j < m_boardWidth; ++j)
     {
-      //reset neighboar count for each space
+      //Reset neighboar count for each space
       int neighborCount = 0;
 
       //This is for top middle cells
       if (i == 0 && j != 0 && j != m_boardWidth-1)
       {
-        //cout << "Top_middle" << endl;
-
         if (m_currentGen->readAtIndex(i,j-1)=='X') neighborCount++;
         if (m_currentGen->readAtIndex(i,j+1)=='X') neighborCount++;
         if (m_currentGen->readAtIndex(i+1,j-1)=='X') neighborCount++;
@@ -90,7 +90,6 @@ void MirrorMode::evolve(char m, ofstream& o, int g)
         if (m_currentGen->readAtIndex(i,j-1)=='X') neighborCount++;
         if (m_currentGen->readAtIndex(i,j)=='X') neighborCount++;
         if (m_currentGen->readAtIndex(i,j+1)=='X') neighborCount++;
-
 
         if (neighborCount <= 1) m_nextGen->writeAtIndex(i,j,'-');
         if (neighborCount == 2 ) m_nextGen->writeAtIndex(i,j, m_currentGen->readAtIndex(i,j));
@@ -101,8 +100,6 @@ void MirrorMode::evolve(char m, ofstream& o, int g)
       //This is for bottom middle cells
       else if (i == m_boardHeight-1 && j != 0 && j != m_boardWidth-1)
       {
-        //cout << "bottom_middle" << endl;
-
         if (m_currentGen->readAtIndex(i-1,j-1)=='X') neighborCount++;
         if (m_currentGen->readAtIndex(i-1,j)=='X') neighborCount++;
         if (m_currentGen->readAtIndex(i-1,j+1)=='X') neighborCount++;
@@ -112,7 +109,6 @@ void MirrorMode::evolve(char m, ofstream& o, int g)
         if (m_currentGen->readAtIndex(i,j-1)=='X') neighborCount++;
         if (m_currentGen->readAtIndex(i,j)=='X') neighborCount++;
         if (m_currentGen->readAtIndex(i,j+1)=='X') neighborCount++;
-
 
         if (neighborCount <= 1) m_nextGen->writeAtIndex(i,j,'-');
         if (neighborCount == 2 ) m_nextGen->writeAtIndex(i,j, m_currentGen->readAtIndex(i,j));
@@ -123,8 +119,6 @@ void MirrorMode::evolve(char m, ofstream& o, int g)
       //This is for left middle cells
       else if (i > 0 && i < m_boardHeight-1 && j == 0)
       {
-        //cout << "left_middle" << endl;
-
         if (m_currentGen->readAtIndex(i-1,j)=='X') neighborCount++;
         if (m_currentGen->readAtIndex(i-1,j+1)=='X') neighborCount++;
         if (m_currentGen->readAtIndex(i,j+1)=='X') neighborCount++;
@@ -135,7 +129,6 @@ void MirrorMode::evolve(char m, ofstream& o, int g)
         if (m_currentGen->readAtIndex(i,j)=='X') neighborCount++;
         if (m_currentGen->readAtIndex(i+1,j)=='X') neighborCount++;
 
-
         if (neighborCount <= 1) m_nextGen->writeAtIndex(i,j,'-');
         if (neighborCount == 2 ) m_nextGen->writeAtIndex(i,j, m_currentGen->readAtIndex(i,j));
         if (neighborCount == 3) m_nextGen->writeAtIndex(i,j,'X');
@@ -145,8 +138,6 @@ void MirrorMode::evolve(char m, ofstream& o, int g)
       //This is for right middle cells
       else if (i > 0 && i < m_boardHeight-1 && j == m_boardWidth-1)
       {
-        //cout << "right_middle" << endl;
-
         if (m_currentGen->readAtIndex(i-1,j)=='X') neighborCount++;
         if (m_currentGen->readAtIndex(i-1,j-1)=='X') neighborCount++;
         if (m_currentGen->readAtIndex(i,j-1)=='X') neighborCount++;
@@ -157,7 +148,6 @@ void MirrorMode::evolve(char m, ofstream& o, int g)
         if (m_currentGen->readAtIndex(i,j)=='X') neighborCount++;
         if (m_currentGen->readAtIndex(i+1,j)=='X') neighborCount++;
 
-
         if (neighborCount <= 1) m_nextGen->writeAtIndex(i,j,'-');
         if (neighborCount == 2 ) m_nextGen->writeAtIndex(i,j, m_currentGen->readAtIndex(i,j));
         if (neighborCount == 3) m_nextGen->writeAtIndex(i,j,'X');
@@ -167,8 +157,6 @@ void MirrorMode::evolve(char m, ofstream& o, int g)
       //This is for top left corner cell
       else if (i == 0 && j == 0)
       {
-        //cout << "top_left_corner" << endl;
-
         if (m_currentGen->readAtIndex(i,j+1)=='X') neighborCount++;
         if (m_currentGen->readAtIndex(i+1,j+1)=='X') neighborCount++;
         if (m_currentGen->readAtIndex(i+1,j)=='X') neighborCount++;
@@ -187,8 +175,6 @@ void MirrorMode::evolve(char m, ofstream& o, int g)
       //This for bottom left corner cell
       else if (i == m_boardHeight-1 && j == 0)
       {
-        //cout << "bottom_left_corner" << endl;
-
         if (m_currentGen->readAtIndex(i,j+1)=='X') neighborCount++;
         if (m_currentGen->readAtIndex(i-1,j+1)=='X') neighborCount++;
         if (m_currentGen->readAtIndex(i-1,j)=='X') neighborCount++;
@@ -197,7 +183,6 @@ void MirrorMode::evolve(char m, ofstream& o, int g)
         if (m_currentGen->readAtIndex(i,j+1)=='X') neighborCount++;
 
         if (m_currentGen->readAtIndex(i,j)=='X') neighborCount += 3;
-
 
         if (neighborCount <= 1) m_nextGen->writeAtIndex(i,j,'-');
         if (neighborCount == 2 ) m_nextGen->writeAtIndex(i,j, m_currentGen->readAtIndex(i,j));
@@ -208,8 +193,6 @@ void MirrorMode::evolve(char m, ofstream& o, int g)
       //This is for top right corner cell
       else if (i == 0 && j == m_boardWidth-1)
       {
-        //cout << "top_right_corner" << endl;
-
         if (m_currentGen->readAtIndex(i,j-1)=='X') neighborCount++;
         if (m_currentGen->readAtIndex(i+1,j-1)=='X') neighborCount++;
         if (m_currentGen->readAtIndex(i+1,j)=='X') neighborCount++;
@@ -218,7 +201,6 @@ void MirrorMode::evolve(char m, ofstream& o, int g)
         if (m_currentGen->readAtIndex(i+1,j)=='X') neighborCount++;
 
         if (m_currentGen->readAtIndex(i,j)=='X') neighborCount += 3;
-
 
         if (neighborCount <= 1) m_nextGen->writeAtIndex(i,j,'-');
         if (neighborCount == 2 ) m_nextGen->writeAtIndex(i,j, m_currentGen->readAtIndex(i,j));
@@ -229,8 +211,6 @@ void MirrorMode::evolve(char m, ofstream& o, int g)
       //This is for bottom right corner cell
       else if (i == m_boardHeight-1 && j == m_boardWidth-1)
       {
-        //cout << "bottom_right_corner" << endl;
-
         if (m_currentGen->readAtIndex(i,j-1)=='X') neighborCount++;
         if (m_currentGen->readAtIndex(i-1,j-1)=='X') neighborCount++;
         if (m_currentGen->readAtIndex(i-1,j)=='X') neighborCount++;
@@ -240,17 +220,15 @@ void MirrorMode::evolve(char m, ofstream& o, int g)
 
         if (m_currentGen->readAtIndex(i,j)=='X') neighborCount += 3;
 
-
         if (neighborCount <= 1) m_nextGen->writeAtIndex(i,j,'-');
         if (neighborCount == 2 ) m_nextGen->writeAtIndex(i,j, m_currentGen->readAtIndex(i,j));
         if (neighborCount == 3) m_nextGen->writeAtIndex(i,j,'X');
         if (neighborCount >= 4) m_nextGen->writeAtIndex(i,j,'-');
       }
 
+      //Middle cells
       else
       {
-        //cout << "Middle" << endl;
-
         if (m_currentGen->readAtIndex(i-1,j-1)=='X') neighborCount++;
         if (m_currentGen->readAtIndex(i-1,j)=='X') neighborCount++;
         if (m_currentGen->readAtIndex(i-1,j+1)=='X') neighborCount++;
@@ -264,10 +242,10 @@ void MirrorMode::evolve(char m, ofstream& o, int g)
         if (neighborCount == 2) m_nextGen->writeAtIndex(i,j, m_currentGen->readAtIndex(i,j));
         if (neighborCount == 3) m_nextGen->writeAtIndex(i,j,'X');
         if (neighborCount >= 4) m_nextGen->writeAtIndex(i,j,'-');
-
       }
     }
   }
+
   //Switches the current and next boards, allowing check for no movement
   Board* temp = new Board(m_boardHeight, m_boardWidth);
   temp->setArray(m_currentGen->getArray());
@@ -280,11 +258,10 @@ void MirrorMode::evolve(char m, ofstream& o, int g)
     m_loopChecker->setArray(m_nextGen->getArray());
   }
   delete temp;
-
 }
 
-//checks for the cases in which the current board is empty
-//or if the current board is equal to n past board
+/* Checks for the cases in which the current board is empty,
+   or if the current board is equal to a past board. */
 bool MirrorMode::isDone()
 {
   if (m_currentGen->isEmpty() || (m_currentGen->isEqual(m_nextGen->getArray())) || (m_currentGen->isEqual(m_loopChecker->getArray())))

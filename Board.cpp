@@ -7,8 +7,8 @@
 // Date: 3-11-2020
 // Assignment: Game of Life
 
-//this class contains the board object, which is the main data storage object
-//in this assignment
+/* This class contains the board object, which is the main data storage object
+   in this assignment. */
 
 #include "Board.h"
 

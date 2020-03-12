@@ -9,14 +9,14 @@
 
 #include "Game.h"
 
-//This is the driver file for Game of Life. The Game of Life simulates the
-//growth of bacteria on a 2d grid. Here we create a game object, and within that
-//we have place the code for accepting user commands, and outputting simulation
-//resuts
+/* This is the driver file for Game of Life. The Game of Life simulates the
+   growth of bacteria on a 2D grid. Here, we create a game object, and within
+   that we have place the code for accepting user commands, and outputting
+   simulation resuts. */
 
 int main(int argc, char** argv)
 {
-  // Testing Game Object
+  //Creating a Game Object
   Game* g = new Game();
   g->start();
   delete g;

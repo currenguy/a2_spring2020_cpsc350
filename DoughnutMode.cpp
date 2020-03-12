@@ -7,20 +7,20 @@
 // Date: 3-11-2020
 // Assignment: Game of Life
 
-//this is the game mode that wraps neighboring cells on the edges
-//of the board over to the other side, in essence simulating torus or
-//doughnut effect.
+/* This is the game mode that wraps neighboring cells on the edges
+   of the board over to the other side, in essence simulating torus or
+   doughnut effect. */
 
 #include "DoughnutMode.h"
 
-//constructor
+//Constructor
 DoughnutMode::DoughnutMode()
 {
   m_boardHeight = 0;
   m_boardWidth = 0;
 }
 
-//destructor
+//Destructor
 DoughnutMode::~DoughnutMode()
 {
   delete m_currentGen;
@@ -28,7 +28,7 @@ DoughnutMode::~DoughnutMode()
   delete m_loopChecker;
 }
 
-//sets current board from file
+//Sets current board from file
 void DoughnutMode::setFileBoard(string path)
 {
   ReadFile* x = new ReadFile();
@@ -41,7 +41,7 @@ void DoughnutMode::setFileBoard(string path)
   m_boardWidth = m_currentGen->getWidth();
 }
 
-//initis random board based on user inputs
+//Initializes random board based on user inputs
 void DoughnutMode::setRandomBoard(int height, int width, double density)
 {
   m_boardHeight = height;
@@ -52,15 +52,15 @@ void DoughnutMode::setRandomBoard(int height, int width, double density)
   m_loopChecker = new Board(m_boardHeight, m_boardWidth);
 }
 
+//Returns the current board
 Board* DoughnutMode::getCurrentBoard()
 {
   return m_currentGen;
 }
 
-//evolves the rules based on the characteristics of doughnut mode
+//Evolves the rules based on the characteristics of doughnut mode
 void DoughnutMode::evolve(char m, ofstream& o, int g)
 {
-
   if (m == 'a' || m == 'm')
   {
     cout << m_currentGen->write();
@@ -82,8 +82,6 @@ void DoughnutMode::evolve(char m, ofstream& o, int g)
       //This is for top middle cells
       if (i == 0 && j != 0 && j != m_boardWidth-1)
       {
-        //cout << "Top_middle" << endl;
-
         if (m_currentGen->readAtIndex(i,j-1)=='X') neighborCount++;
         if (m_currentGen->readAtIndex(i,j+1)=='X') neighborCount++;
         if (m_currentGen->readAtIndex(i+1,j-1)=='X') neighborCount++;
@@ -94,7 +92,6 @@ void DoughnutMode::evolve(char m, ofstream& o, int g)
         if (m_currentGen->readAtIndex(m_boardHeight-1,j)=='X') neighborCount++;
         if (m_currentGen->readAtIndex(m_boardHeight-1,j+1)=='X') neighborCount++;
 
-
         if (neighborCount <= 1) m_nextGen->writeAtIndex(i,j,'-');
         if (neighborCount == 2 ) m_nextGen->writeAtIndex(i,j, m_currentGen->readAtIndex(i,j));
         if (neighborCount == 3) m_nextGen->writeAtIndex(i,j,'X');
@@ -104,8 +101,6 @@ void DoughnutMode::evolve(char m, ofstream& o, int g)
       //This is for bottom middle cells
       else if (i == m_boardHeight-1 && j != 0 && j != m_boardWidth-1)
       {
-        //cout << "bottom_middle" << endl;
-
         if (m_currentGen->readAtIndex(i-1,j-1)=='X') neighborCount++;
         if (m_currentGen->readAtIndex(i-1,j)=='X') neighborCount++;
         if (m_currentGen->readAtIndex(i-1,j+1)=='X') neighborCount++;
@@ -116,7 +111,6 @@ void DoughnutMode::evolve(char m, ofstream& o, int g)
         if (m_currentGen->readAtIndex(0,j)=='X') neighborCount++;
         if (m_currentGen->readAtIndex(0,j+1)=='X') neighborCount++;
 
-
         if (neighborCount <= 1) m_nextGen->writeAtIndex(i,j,'-');
         if (neighborCount == 2 ) m_nextGen->writeAtIndex(i,j, m_currentGen->readAtIndex(i,j));
         if (neighborCount == 3) m_nextGen->writeAtIndex(i,j,'X');
@@ -126,8 +120,6 @@ void DoughnutMode::evolve(char m, ofstream& o, int g)
       //This is for left middle cells
       else if (i > 0 && i < m_boardHeight-1 && j == 0)
       {
-        //cout << "left_middle" << endl;
-
         if (m_currentGen->readAtIndex(i-1,j)=='X') neighborCount++;
         if (m_currentGen->readAtIndex(i-1,j+1)=='X') neighborCount++;
         if (m_currentGen->readAtIndex(i,j+1)=='X') neighborCount++;
@@ -138,7 +130,6 @@ void DoughnutMode::evolve(char m, ofstream& o, int g)
         if (m_currentGen->readAtIndex(i,m_boardWidth-1)=='X') neighborCount++;
         if (m_currentGen->readAtIndex(i+1,m_boardWidth-1)=='X') neighborCount++;
 
-
         if (neighborCount <= 1) m_nextGen->writeAtIndex(i,j,'-');
         if (neighborCount == 2 ) m_nextGen->writeAtIndex(i,j, m_currentGen->readAtIndex(i,j));
         if (neighborCount == 3) m_nextGen->writeAtIndex(i,j,'X');
@@ -148,8 +139,6 @@ void DoughnutMode::evolve(char m, ofstream& o, int g)
       //This is for right middle cells
       else if (i > 0 && i < m_boardHeight-1 && j == m_boardWidth-1)
       {
-        //cout << "right_middle" << endl;
-
         if (m_currentGen->readAtIndex(i-1,j)=='X') neighborCount++;
         if (m_currentGen->readAtIndex(i-1,j-1)=='X') neighborCount++;
         if (m_currentGen->readAtIndex(i,j-1)=='X') neighborCount++;
@@ -160,7 +149,6 @@ void DoughnutMode::evolve(char m, ofstream& o, int g)
         if (m_currentGen->readAtIndex(i,0)=='X') neighborCount++;
         if (m_currentGen->readAtIndex(i+1,0)=='X') neighborCount++;
 
-
         if (neighborCount <= 1) m_nextGen->writeAtIndex(i,j,'-');
         if (neighborCount == 2 ) m_nextGen->writeAtIndex(i,j, m_currentGen->readAtIndex(i,j));
         if (neighborCount == 3) m_nextGen->writeAtIndex(i,j,'X');
@@ -170,8 +158,6 @@ void DoughnutMode::evolve(char m, ofstream& o, int g)
       //This is for top left corner cell
       else if (i == 0 && j == 0)
       {
-        //cout << "top_left_corner" << endl;
-
         if (m_currentGen->readAtIndex(i,j+1)=='X') neighborCount++;
         if (m_currentGen->readAtIndex(i+1,j+1)=='X') neighborCount++;
         if (m_currentGen->readAtIndex(i+1,j)=='X') neighborCount++;
@@ -184,7 +170,6 @@ void DoughnutMode::evolve(char m, ofstream& o, int g)
 
         if (m_currentGen->readAtIndex(m_boardHeight-1,m_boardWidth-1)=='X') neighborCount++;
 
-
         if (neighborCount <= 1) m_nextGen->writeAtIndex(i,j,'-');
         if (neighborCount == 2 ) m_nextGen->writeAtIndex(i,j, m_currentGen->readAtIndex(i,j));
         if (neighborCount == 3) m_nextGen->writeAtIndex(i,j,'X');
@@ -194,8 +179,6 @@ void DoughnutMode::evolve(char m, ofstream& o, int g)
       //This for bottom left corner cell
       else if (i == m_boardHeight-1 && j == 0)
       {
-        //cout << "bottom_left_corner" << endl;
-
         if (m_currentGen->readAtIndex(i,j+1)=='X') neighborCount++;
         if (m_currentGen->readAtIndex(i-1,j+1)=='X') neighborCount++;
         if (m_currentGen->readAtIndex(i-1,j)=='X') neighborCount++;
@@ -208,18 +191,14 @@ void DoughnutMode::evolve(char m, ofstream& o, int g)
 
         if (m_currentGen->readAtIndex(0,m_boardWidth-1)=='X') neighborCount++;
 
-
         if (neighborCount <= 1) m_nextGen->writeAtIndex(i,j,'-');
         if (neighborCount == 2 ) m_nextGen->writeAtIndex(i,j, m_currentGen->readAtIndex(i,j));
         if (neighborCount == 3) m_nextGen->writeAtIndex(i,j,'X');
         if (neighborCount >= 4) m_nextGen->writeAtIndex(i,j,'-');
       }
-
       //This is for top right corner cell
       else if (i == 0 && j == m_boardWidth-1)
       {
-        //cout << "top_right_corner" << endl;
-
         if (m_currentGen->readAtIndex(i,j-1)=='X') neighborCount++;
         if (m_currentGen->readAtIndex(i+1,j-1)=='X') neighborCount++;
         if (m_currentGen->readAtIndex(i+1,j)=='X') neighborCount++;
@@ -231,7 +210,6 @@ void DoughnutMode::evolve(char m, ofstream& o, int g)
         if (m_currentGen->readAtIndex(0,0)=='X') neighborCount++;
         if (m_currentGen->readAtIndex(1,0)=='X') neighborCount++;
 
-
         if (neighborCount <= 1) m_nextGen->writeAtIndex(i,j,'-');
         if (neighborCount == 2 ) m_nextGen->writeAtIndex(i,j, m_currentGen->readAtIndex(i,j));
         if (neighborCount == 3) m_nextGen->writeAtIndex(i,j,'X');
@@ -241,8 +219,6 @@ void DoughnutMode::evolve(char m, ofstream& o, int g)
       //This is for bottom right corner cell
       else if (i == m_boardHeight-1 && j == m_boardWidth-1)
       {
-        //cout << "bottom_right_corner" << endl;
-
         if (m_currentGen->readAtIndex(i,j-1)=='X') neighborCount++;
         if (m_currentGen->readAtIndex(i-1,j-1)=='X') neighborCount++;
         if (m_currentGen->readAtIndex(i-1,j)=='X') neighborCount++;
@@ -261,10 +237,9 @@ void DoughnutMode::evolve(char m, ofstream& o, int g)
         if (neighborCount >= 4) m_nextGen->writeAtIndex(i,j,'-');
       }
 
+      //Middle cells
       else
       {
-        //cout << "Middle" << endl;
-
         if (m_currentGen->readAtIndex(i-1,j-1)=='X') neighborCount++;
         if (m_currentGen->readAtIndex(i-1,j)=='X') neighborCount++;
         if (m_currentGen->readAtIndex(i-1,j+1)=='X') neighborCount++;
@@ -295,10 +270,9 @@ void DoughnutMode::evolve(char m, ofstream& o, int g)
     m_loopChecker->setArray(m_nextGen->getArray());
   }
   delete temp;
-  // cout << "CURRENT:" << endl << m_currentGen->write() << endl;
-  // cout << "NEXT:" << endl << m_nextGen->write() << endl;
 }
 
+//Checks if the generations are done changing
 bool DoughnutMode::isDone()
 {
   if (m_currentGen->isEmpty() || (m_currentGen->isEqual(m_nextGen->getArray())) || (m_currentGen->isEqual(m_loopChecker->getArray())))

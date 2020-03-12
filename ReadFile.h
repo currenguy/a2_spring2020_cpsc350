@@ -7,8 +7,8 @@
 // Date: 3-11-2020
 // Assignment: Game of Life
 
-//This class makes an object that
-//takes in path and returns a board object that mirrors that of the one in the file
+/* This class makes an object that takes in a path and returns
+   a board object from the board design in the file. */
 
 #ifndef READFILE_H
 #define READFILE_H
@@ -23,11 +23,12 @@ using namespace std;
 class ReadFile
 {
   public:
-    //constructors and destructors
+    //Constructors and Destructors
     ReadFile();
     ~ReadFile();
-    //takes in path and returns a board object that
-    //mirrors that of the one in the file
+
+    //Takes in path and returns a board object that
+    //mirrors that of the one in the file.
     Board* return_board(string path);
 
   private:

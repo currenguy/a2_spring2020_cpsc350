@@ -7,8 +7,8 @@
 // Date: 3-11-2020
 // Assignment: Game of Life
 
-//this is the game mode that double counts neighboring cells on the edges
-//of the board, in essence simulating a 'mirror' effect 
+/* This is the game mode that reflects cells on the edges with themselves,
+   in essence simulating a 'mirror' effect. */
 
 #ifndef MIRRORMODE_H
 #define MIRRORMODE_H
@@ -21,18 +21,19 @@
 class MirrorMode: public Mode
 {
 public:
-  //constructors and destructors
+  //Constructor and Destructor
   MirrorMode();
   ~MirrorMode();
-  //sets the current board from an external file
+
+  //Sets the current board from an external file
   void setFileBoard(string path);
-  //creates a random board given user params
+  //Creates a random board given user params
   void setRandomBoard(int height, int width, double density);
-  //returns current board
+  //Returns current board
   Board* getCurrentBoard();
-  //evolves a board by a single generation by the rules of the specific mode
+  //Evolves a board by a single generation by the rules of the specific mode
   void evolve(char m, ofstream& o, int g);
-  //checks if the boards justify quitting the evolution loop
+  //Checks if the boards justify quitting the evolution loop
   bool isDone();
 
 private:

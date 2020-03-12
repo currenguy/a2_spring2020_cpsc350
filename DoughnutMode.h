@@ -7,9 +7,9 @@
 // Date: 3-11-2020
 // Assignment: Game of Life
 
-//this is the game mode that wraps neighboring cells on the edges
-//of the board over to the other side, in essence simulating torus or
-//doughnut effect.
+/* This is the game mode that wraps neighboring cells on the edges
+   of the board over to the other side, in essence simulating torus or
+   doughnut effect. */
 
 #ifndef DOUGHNUTMODE_H
 #define DOUGHNUTMODE_H
@@ -22,19 +22,19 @@
 class DoughnutMode: public Mode
 {
   public:
-    //constructor and destructor
+    //Constructor and Destructor
     DoughnutMode();
     ~DoughnutMode();
 
-    //sets the current board from an external file
+    //Sets the current board from an external file
     void setFileBoard(string path);
-    //creates a random board given user params
+    //Creates a random board given user params
     void setRandomBoard(int height, int width, double density);
-    //returns current board
+    //Returns current board
     Board* getCurrentBoard();
-    //evolves a board by a single generation by the rules of the specific mode
+    //Evolves a board by a single generation by the rules of the specific mode
     void evolve(char m, ofstream& o, int g);
-    //checks if the boards justify quitting the evolution loop
+    //Checks if the boards justify quitting the evolution loop
     bool isDone();
 
   private:
