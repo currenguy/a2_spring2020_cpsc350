@@ -7,6 +7,10 @@
 // Date: 3-11-2020
 // Assignment: Game of Life
 
+//this is an abstract class that classicmode, doughnutmode, and mirror mode all inherit
+//from, it includes setters and getters that each game type should have
+//and most importantly, an "evolve" function that each subclass overloads
+
 #ifndef MODE_H
 #define MODE_H
 
@@ -15,6 +19,7 @@
 class Mode
 {
   public:
+    //constructors and destructors
     Mode();
     ~Mode();
 

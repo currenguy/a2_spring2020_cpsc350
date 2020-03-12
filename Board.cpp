@@ -7,6 +7,9 @@
 // Date: 3-11-2020
 // Assignment: Game of Life
 
+//this class contains the board object, which is the main data storage object
+//in this assignment
+
 #include "Board.h"
 
 //Default constructor
@@ -100,12 +103,24 @@ void Board:: populate(double density)
   }
   else
   {
+    //loops to fill the correct number of cells
     for (int i = 0; i < cellsToFill; ++i)
     {
-      int randomRow = rand() % this->m_height;
-      int randomColumn = rand() % this->m_width;
+      bool isLegal = false;
 
-      this->m_array[randomRow][randomColumn] = 'X';
+      //checks to make sure we're not setting an already
+      //populated cell again and decrementing
+      while (!isLegal)
+      {
+        int randomRow = rand() % this->m_height;
+        int randomColumn = rand() % this->m_width;
+
+        if (this->m_array[randomRow][randomColumn] == '-')
+        {
+          this->m_array[randomRow][randomColumn] = 'X';
+          isLegal = true;
+        }
+      }
     }
   }
 }

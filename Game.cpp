@@ -9,6 +9,7 @@
 
 #include "Game.h"
 
+//inits the vars needed for play
 Game::Game()
 {
   m_inputMode = INPUT;
@@ -25,6 +26,7 @@ Game::~Game()
 
 }
 
+//prints input options
 string Game::getInputOptions()
 {
   string s = "";
@@ -38,6 +40,7 @@ string Game::getInputOptions()
   return s;
 }
 
+//prints view options
 string Game::getViewOptions()
 {
   string s = "";
@@ -51,6 +54,7 @@ string Game::getViewOptions()
   return s;
 }
 
+//prints boandary options
 string Game::getBoundOptions()
 {
   string s = "";
@@ -64,6 +68,7 @@ string Game::getBoundOptions()
   return s;
 }
 
+//prints input file options
 string Game::getInputFile()
 {
   string s = "";
@@ -75,6 +80,7 @@ string Game::getInputFile()
   return s;
 }
 
+//prints height options
 string Game::getInputHeight()
 {
   string s = "";
@@ -86,6 +92,7 @@ string Game::getInputHeight()
   return s;
 }
 
+//prints density options
 string Game::getInputDensity()
 {
   string s = "";
@@ -97,6 +104,7 @@ string Game::getInputDensity()
   return s;
 }
 
+//starts the while loop
 void Game::start()
 {
   int userInput = -1;
@@ -259,6 +267,7 @@ void Game::start()
     }
   }
 
+  //initializing modes based on choices
   if (this->m_boundMode == CLASSIC)
   {
     ClassicMode* c = new ClassicMode();
@@ -320,6 +329,7 @@ void Game::start()
     outFile.close();
     delete c;
   }
+  //initializing to doughnut mode based on choices
   else if (this->m_boundMode == DOUGHNUT)
   {
     DoughnutMode* c = new DoughnutMode();
@@ -381,6 +391,7 @@ void Game::start()
     outFile.close();
     delete c;
   }
+  //initialize to mirror mode based on choices
   else if (this->m_boundMode == MIRROR)
   {
     {

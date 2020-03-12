@@ -12,31 +12,34 @@
 #include "DoughnutMode.h"
 #include "ReadFile.h"
 
-
+//allows us to use number options to correspond to game options
 enum inputMode {INPUT = 1, RANDOM = 2};
 enum viewMode {AUTO = 1, MANUAL = 2, OUTPUT = 3};
 enum boundMode {CLASSIC = 1, DOUGHNUT = 2, MIRROR = 3};
-
-//This class is used to make a Game object
 
 class Game
 {
 
   public:
+    //constructors and destructors
     Game();
     ~Game();
 
+    //methods for printing the
+    //input option
+    //view option
+    //boundary/mode option
+    //file to read from option
+    //board height
+    //density option
     string getInputOptions();
     string getViewOptions();
     string getBoundOptions();
     string getInputFile();
     string getInputHeight();
     string getInputDensity();
-
-    // 1. Ask if providing a map, or random map (requires w, h, and decimal)
-    // 2. Ask for the boundary mode
-    // 3. Ask for the viewing mode
-    // 4. Run the simulation
+    //begins the while loop where the game
+    //is played
     void start();
 
   private:

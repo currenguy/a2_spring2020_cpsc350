@@ -7,6 +7,9 @@
 // Date: 3-11-2020
 // Assignment: Game of Life
 
+//this is the game mode that double counts neighboring cells on the edges
+//of the board, in essence simulating a 'mirror' effect
+
 #include "MirrorMode.h"
 
 MirrorMode::MirrorMode()
@@ -22,6 +25,7 @@ MirrorMode::~MirrorMode()
   delete m_loopChecker;
 }
 
+//sets current board to equal the one in file
 void MirrorMode::setFileBoard(string path)
 {
   ReadFile* x = new ReadFile();
@@ -34,6 +38,7 @@ void MirrorMode::setFileBoard(string path)
   m_boardWidth = m_currentGen->getWidth();
 }
 
+//randomizes the current board, and matches size of next board
 void MirrorMode::setRandomBoard(int height, int width, double density)
 {
   m_boardHeight = height;
@@ -49,6 +54,7 @@ Board* MirrorMode::getCurrentBoard()
   return m_currentGen;
 }
 
+//contains the evolve rules for mirror mode
 void MirrorMode::evolve(char m, ofstream& o, int g)
 {
 
@@ -274,11 +280,11 @@ void MirrorMode::evolve(char m, ofstream& o, int g)
     m_loopChecker->setArray(m_nextGen->getArray());
   }
   delete temp;
-  // cout << "CURRENT:" << endl << m_currentGen->write() << endl;
-  // cout << "NEXT:" << endl << m_nextGen->write() << endl;
 
 }
 
+//checks for the cases in which the current board is empty
+//or if the current board is equal to n past board
 bool MirrorMode::isDone()
 {
   if (m_currentGen->isEmpty() || (m_currentGen->isEqual(m_nextGen->getArray())) || (m_currentGen->isEqual(m_loopChecker->getArray())))

@@ -7,14 +7,20 @@
 // Date: 3-11-2020
 // Assignment: Game of Life
 
+//this is the game mode that wraps neighboring cells on the edges
+//of the board over to the other side, in essence simulating torus or
+//doughnut effect.
+
 #include "DoughnutMode.h"
 
+//constructor
 DoughnutMode::DoughnutMode()
 {
   m_boardHeight = 0;
   m_boardWidth = 0;
 }
 
+//destructor
 DoughnutMode::~DoughnutMode()
 {
   delete m_currentGen;
@@ -22,6 +28,7 @@ DoughnutMode::~DoughnutMode()
   delete m_loopChecker;
 }
 
+//sets current board from file
 void DoughnutMode::setFileBoard(string path)
 {
   ReadFile* x = new ReadFile();
@@ -34,6 +41,7 @@ void DoughnutMode::setFileBoard(string path)
   m_boardWidth = m_currentGen->getWidth();
 }
 
+//initis random board based on user inputs
 void DoughnutMode::setRandomBoard(int height, int width, double density)
 {
   m_boardHeight = height;
@@ -49,6 +57,7 @@ Board* DoughnutMode::getCurrentBoard()
   return m_currentGen;
 }
 
+//evolves the rules based on the characteristics of doughnut mode
 void DoughnutMode::evolve(char m, ofstream& o, int g)
 {
 

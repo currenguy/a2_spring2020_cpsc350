@@ -7,6 +7,10 @@
 // Date: 3-11-2020
 // Assignment: Game of Life
 
+//this is the game mode that wraps neighboring cells on the edges
+//of the board over to the other side, in essence simulating torus or
+//doughnut effect.
+
 #include "ClassicMode.h"
 
 ClassicMode::ClassicMode()

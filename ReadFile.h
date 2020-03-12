@@ -7,6 +7,9 @@
 // Date: 3-11-2020
 // Assignment: Game of Life
 
+//This class makes an object that
+//takes in path and returns a board object that mirrors that of the one in the file
+
 #ifndef READFILE_H
 #define READFILE_H
 

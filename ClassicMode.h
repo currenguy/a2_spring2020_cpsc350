@@ -7,6 +7,9 @@
 // Date: 3-11-2020
 // Assignment: Game of Life
 
+//this is the game mode that does't count the cells that are outside the 8
+//neighhbors, even if they are the border and are 'off grid'
+
 #ifndef CLASSICMODE_H
 #define CLASSICMODE_H
 
@@ -21,12 +24,17 @@ class ClassicMode: public Mode
   public:
     ClassicMode(); //Default constructor
     ~ClassicMode(); //Destructor
-    void setFileBoard(string path); //Sets board from a file
+
+    //sets the current board from an external file
+    void setFileBoard(string path);
+    //creates a random board given user params
     void setRandomBoard(int height, int width, double density);
+    //returns current board
     Board* getCurrentBoard();
+    //evolves a board by a single generation by the rules of the specific mode
     void evolve(char m, ofstream& o, int g);
+    //checks if the boards justify quitting the evolution loop
     bool isDone();
-    void init_current_board_from_file(string path);
 
   private:
     Board* m_currentGen;
