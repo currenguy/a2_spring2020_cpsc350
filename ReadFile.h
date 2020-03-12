@@ -20,8 +20,11 @@ using namespace std;
 class ReadFile
 {
   public:
+    //constructors and destructors
     ReadFile();
     ~ReadFile();
+    //takes in path and returns a board object that
+    //mirrors that of the one in the file
     Board* return_board(string path);
 
   private:

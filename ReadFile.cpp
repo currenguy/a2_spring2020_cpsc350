@@ -7,6 +7,9 @@
 // Date: 3-11-2020
 // Assignment: Game of Life
 
+//This class makes an object that
+//takes in path and returns a board object that mirrors that of the one in the file
+
 #include "ReadFile.h"
 
 ReadFile:: ReadFile()
@@ -28,18 +31,21 @@ Board* ReadFile:: return_board(string path)
   ifstream myfile;
   myfile.open(path);
 
+  //check if we can open the file
   if (!myfile.is_open()) {
      perror("Error open");
      exit(EXIT_FAILURE);
   }
 
-  int iterationCount = 0;
   //board creation variables
+  int iterationCount = 0;
   m_fileBoardHeight = 0;
   m_fileBoardWidth = 0;
 
+  //while loop to get every line from file
 	while(getline(myfile, line))
   {
+    //use first 2 loops to get size
     if (iterationCount == 0)
     {
       m_fileBoardHeight = stoi(line);
@@ -49,6 +55,7 @@ Board* ReadFile:: return_board(string path)
       m_fileBoardWidth = stoi(line);
       m_boardToReturn = new Board(m_fileBoardHeight, m_fileBoardWidth);
     }
+    //once the board is made, index through and clone the chars
     else
     {
       for (int i = 0; i < m_fileBoardWidth; ++i)
